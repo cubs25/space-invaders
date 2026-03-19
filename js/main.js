@@ -11,8 +11,11 @@ const ENEMY_SVG2 = {
 
 const LEVEL_COLORS = { 1: '#9e9d9d', 2: '#3e5368', 3: '#6a7a6d', 4: '#ef4343' };
 
-function makeEnemySVG(color, level) {
-  const svg = level === 2 ? ENEMY_SVG2 : ENEMY_SVG;
+function makeEnemySVG(color, level, row) {
+  let svg;
+  if (level === 2) svg = ENEMY_SVG2;
+  else if (level === 3) svg = row % 2 === 0 ? ENEMY_SVG : ENEMY_SVG2;
+  else svg = ENEMY_SVG;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 262.8 210.6" width="36" height="36">
     <style>.f1{animation:sw 0.6s steps(1) infinite}.f2{animation:sw 0.6s steps(1) infinite reverse}@keyframes sw{0%,49%{opacity:1}50%,100%{opacity:0}}</style>
     <g class="f1" fill="${color}">${svg.frame1}</g>
@@ -452,7 +455,7 @@ function spawnEnemies() {
     for (let c = 0; c < cols; c++) {
       const el = document.createElement('div');
       el.classList.add('enemy');
-      el.innerHTML = makeEnemySVG(color, state.level);
+      el.innerHTML = makeEnemySVG(color, state.level, r);
       board.appendChild(el);
       state.enemies.push({ el, x: 20 + c * 56, y: 60 + r * 52, alive: true });
     }
