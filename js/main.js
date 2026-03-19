@@ -553,7 +553,12 @@ function shootPlayer() {
 
 // --- Spawn enemigos ---
 function spawnEnemies() {
-  const config = { 1:{rows:3,cols:8}, 2:{rows:3,cols:9}, 3:{rows:4,cols:9}, 4:{rows:4,cols:10} };
+ const config = { 
+  1: { rows: 3, cols: 8  }, 
+  2: { rows: 3, cols: 10 }, 
+  3: { rows: 4, cols: 10 }, 
+  4: { rows: 5, cols: 10 } 
+};
   const { rows, cols } = config[state.level];
   const color = LEVEL_COLORS[state.level];
   for (let r = 0; r < rows; r++) {
@@ -573,7 +578,11 @@ function getEnemyInterval() {
   const alive = state.enemies.filter(e => e.alive).length;
   const total = state.enemies.length;
   if (total === 0) return 30;
-  return Math.floor(18 + (120 - 18) * (alive / total));
+  const ratio = alive / total;
+  // Base por nivel — cada nivel arranca más rápido
+  const baseMax = 120 - (state.level - 1) * 20; // niv1=120, niv2=100, niv3=80, niv4=60
+  const baseMin = 18 - (state.level - 1) * 3;   // niv1=18, niv2=15, niv3=12, niv4=9
+  return Math.floor(baseMin + (baseMax - baseMin) * ratio);
 }
 
 function moveEnemies() {
@@ -593,7 +602,8 @@ let enemyShootTimer = 0;
 const ENEMY_SHOOT_INTERVAL = 90;
 function enemyShoot() {
   enemyShootTimer++;
-  if (enemyShootTimer < ENEMY_SHOOT_INTERVAL) return;
+  const interval = Math.max(30, ENEMY_SHOOT_INTERVAL - (state.level - 1) * 15);
+  if (enemyShootTimer < interval) return;
   enemyShootTimer = 0;
   const alive = state.enemies.filter(e => e.alive);
   if (!alive.length) return;
