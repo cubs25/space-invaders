@@ -54,15 +54,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  background: #0a0a2a;
-  border-bottom: 1px solid #1a1a4a;
+  background: #34343d;
+
+  border-bottom: 1px solid #5a4f45;
   font-size: 20px;
   letter-spacing: 2px;
-}
-#hud {
-  background: #7b6c5c;
-  border-bottom: 1px solid #5a4f45;
-}
+} 
 #board {
   position: relative;
   width: 100%;
