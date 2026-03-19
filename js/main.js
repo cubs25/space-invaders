@@ -4,13 +4,19 @@ const ENEMY_SVG = {
   frame2: `<path d="M224.7,42.6V86h-19V64h-21.6V43h21.6V21h-22v21.6h-21.6V64h-61.4V42.6h-22V21H57.1v22h21.6v21H57.1v22h-19V42.6H16.9v85.2h21.2v19.8h19v20h21.6h1.2v-21.4h103.2v21.4h22.6v-20h19v-19.8h21.2V42.6H224.7z M100.9,105.6v0.4H79.3V84h21.6V105.6z M183.1,105.6v0.4h-21.6V84h21.6V105.6z"/><polygon points="34.8,190 56.4,190 56.4,168 34.8,168"/><polygon points="205.2,189.4 226.8,189.4 226.8,167.4 205.2,167.4"/>`
 };
 
+const ENEMY_SVG2 = {
+  frame1: `<rect x="89.2" y="49.2" width="87.2" height="20"/><path d="M91.6,98.6V115h18.4V98.6h12.2V115h18.4V98.6H153V115h18.4V98.6V83.1h15.9v-6.7l0,0V41.9l0,0v-7.1h-16V19.4 H91.5v15.4H75.8v16.2l0,0v16l0,0v16.2h15.8V98.6z M171,50.9v16h-31.6v-16H171z M92.1,50.9h31.2v16H92.1V50.9z"/><polygon points="208.9,109.1 208.9,125.6 171.2,125.6 171.2,141.3 92.1,141.3 92.1,125.6 54.4,125.6 54.4,109.1 31.6,109.1 31.6,125.6 31.6,127.5 31.6,141.8 91.6,141.8 91.6,157.3 31.6,157.3 31.6,171.6 31.6,173.5 31.6,190 54.4,190 54.4,173.5 92.1,173.5 92.1,157.4 171.2,157.4 171.2,173.5 208.9,173.5 208.9,190 231.7,190 231.7,173.5 231.7,171.6 231.7,157.3 171.3,157.3 171.3,141.8 231.7,141.8 231.7,127.5 231.7,125.6 231.7,109.1"/>`,
+  frame2: `<rect x="89.2" y="49.2" width="87.2" height="20"/><path d="M91.6,98.6V115h18.4V98.6h12.2V115h18.4V98.6H153V115h18.4V98.6V83.1h15.9v-6.7l0,0V41.9l0,0v-7.1h-16V19.4 H91.5v15.4H75.8v16.2l0,0v16l0,0v16.2h15.8V98.6z M171,50.9v16h-31.6v-16H171z M92.1,50.9h31.2v16H92.1V50.9z"/><polygon points="208.9,83.1 208.9,125.6 171.2,125.6 171.2,141.3 92.1,141.3 92.1,125.6 54.4,125.6 54.4,83.1 31.6,83.1 31.6,125.6 31.6,127.5 31.6,141.8 91.6,141.8 91.6,157.3 31.6,157.3 31.6,171.6 31.6,173.5 31.6,200 54.4,200 54.4,173.5 92.1,173.5 92.1,157.4 171.2,157.4 171.2,173.5 208.9,173.5 208.9,200 231.7,200 231.7,173.5 231.7,171.6 231.7,157.3 171.3,157.3 171.3,141.8 231.7,141.8 231.7,127.5 231.7,125.6 231.7,83.1"/>`
+};
+
 const LEVEL_COLORS = { 1: '#9e9d9d', 2: '#3e5368', 3: '#6a7a6d', 4: '#ef4343' };
 
-function makeEnemySVG(color) {
+function makeEnemySVG(color, level) {
+  const svg = level === 2 ? ENEMY_SVG2 : ENEMY_SVG;
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 262.8 210.6" width="36" height="36">
     <style>.f1{animation:sw 0.6s steps(1) infinite}.f2{animation:sw 0.6s steps(1) infinite reverse}@keyframes sw{0%,49%{opacity:1}50%,100%{opacity:0}}</style>
-    <g class="f1" fill="${color}">${ENEMY_SVG.frame1}</g>
-    <g class="f2" fill="${color}">${ENEMY_SVG.frame2}</g>
+    <g class="f1" fill="${color}">${svg.frame1}</g>
+    <g class="f2" fill="${color}">${svg.frame2}</g>
   </svg>`;
 }
 
@@ -446,7 +452,7 @@ function spawnEnemies() {
     for (let c = 0; c < cols; c++) {
       const el = document.createElement('div');
       el.classList.add('enemy');
-      el.innerHTML = makeEnemySVG(color);
+      el.innerHTML = makeEnemySVG(color, state.level);
       board.appendChild(el);
       state.enemies.push({ el, x: 20 + c * 56, y: 60 + r * 52, alive: true });
     }
