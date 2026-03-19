@@ -282,7 +282,7 @@ const PLAYLIST = [
   { file: 'assets/sounds/ThereYouGo.mp3',                            label: 'There You Go' },
   
 ];
-let trackIndex = 0;
+let trackIndex = Math.floor(Math.random() * PLAYLIST.length);
 let bgAudio = new Audio(PLAYLIST[0].file);
 bgAudio.loop = false;
 bgAudio.volume = 0.4;
