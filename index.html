@@ -45,9 +45,9 @@
   <button id="btn-pause-big" onclick="togglePause()">
     <i class="fa-solid fa-pause"></i> PAUSA
   </button>
-  <button id="btn-lb" onclick="showLeaderboard()">
-    <i class="fa-solid fa-trophy"></i> TOP 50
-  </button>
+<button id="btn-lb" onclick="showLeaderboard()">
+  <i class="fa-solid fa-trophy" style="color:#FFD700"></i> TOP 50
+</button>
   <button id="btn-mute" onclick="toggleMute()">
     <i class="fa-solid fa-volume-high"></i> SONIDO
   </button>
@@ -70,10 +70,10 @@
 <div id="screen-start" class="screen">
   <h1>SPACE INVADERS</h1>
   <p style="font-size:18px;color:#888;letter-spacing:2px;">TUS INICIALES</p>
-  <input id="initials-input-start" maxlength="5"
-    style="font-family:'VT323',monospace;font-size:48px;width:120px;text-align:center;
-    background:#0a0a2a;border:2px solid #c28a3e;color:#fff;letter-spacing:10px;margin:8px 0;"
-    onkeydown="if(event.key==='Enter')setInitials()"/>
+<input id="initials-input-start" maxlength="4"
+  style="font-family:'VT323',monospace;font-size:48px;width:160px;text-align:center;
+  background:#0a0a2a;border:2px solid #c28a3e;color:#fff;letter-spacing:8px;margin:8px 0;"
+  onkeydown="if(event.key==='Enter')setInitials()"/>
   <button onclick="setInitials()" id="btn-start">PRESS START</button>
 </div>
 <div id="screen-gameover" class="screen hidden">

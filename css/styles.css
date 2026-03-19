@@ -221,12 +221,31 @@ body {
   align-items: center;
   gap: 6px;
   padding: 5px 12px;
-  background: #0a0a2a;
-  border-bottom: 1px solid #1a1a4a;
+  background: #5c2e0e;
+  border-bottom: 1px solid #3d1a08;
   font-size: 13px;
   letter-spacing: 1px;
-  color: #aaa;
+  color: #ede0cc;
   font-family: 'VT323', monospace;
+}
+
+.mp-btn {
+  background: none;
+  border: 1px solid #8a4a1e;
+  color: #ede0cc;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.mp-btn:hover {
+  color: #fff;
+  border-color: #c28a3e;
 }
 
 #track-label {
