@@ -283,7 +283,7 @@ const PLAYLIST = [
   
 ];
 let trackIndex = Math.floor(Math.random() * PLAYLIST.length);
-let bgAudio = new Audio(PLAYLIST[0].file);
+let bgAudio = new Audio(PLAYLIST[trackIndex].file);
 bgAudio.loop = false;
 bgAudio.volume = 0.4;
 bgAudio.addEventListener('ended', () => nextTrack());
