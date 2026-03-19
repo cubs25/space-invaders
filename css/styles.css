@@ -63,7 +63,7 @@ body {
 #board {
   position: relative;
   width: 100%;
-  height: calc(100% - 82px);
+  height: calc(100% - 160px);
   z-index: 1;
 }
 
@@ -285,9 +285,7 @@ body {
   cursor: pointer;
 }
 
-#board {
-  height: calc(100% - 115px);
-}
+
 #btn-pause {
   background: none;
   border: none;
@@ -324,6 +322,14 @@ body {
   background: #3a5a50;
 }
 
+
 #btn-mute {
   border-right: none;
+}
+#record-display {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
