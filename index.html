@@ -23,13 +23,14 @@
         </svg>
       </div>
 
-      <div id="hud">
-        <span>SCORE: <strong id="score">0</strong></span>
-        <span>NIVEL: <strong id="level">1</strong></span>
-        <span>VIDAS: <strong id="lives"></strong></span>
-      <button id="btn-mute" onclick="toggleMute()"><i class="fa-solid fa-volume-high"></i></button>
-      <button id="btn-pause" onclick="togglePause()"><i class="fa-solid fa-pause"></i></button>
-     </div>
+   <div id="hud">
+  <span>SCORE: <strong id="score">0</strong></span>
+  <span>NIVEL: <strong id="level">1</strong></span>
+  <span>PLAYER: <strong id="player-name">---</strong></span>
+  <span>VIDAS: <strong id="lives"></strong></span>
+  <button id="btn-mute" onclick="toggleMute()"><i class="fa-solid fa-volume-high"></i></button>
+  <button id="btn-pause" onclick="togglePause()"><i class="fa-solid fa-pause"></i></button>
+</div>
 
 <!-- Player de música -->
 <div id="music-player">
@@ -42,8 +43,7 @@
   <input type="range" id="vol-slider" min="0" max="100" value="40" oninput="setBGVolume(this.value/100)"/>
   <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume + 0.1)"><i class="fa-solid fa-chevron-up"></i></button>
 </div>
-      <div id="board">
-        <span>PLAYER: <strong id="player-name">---</strong></span>
+      <div id="board"> 
         <div id="player"></div>
       </div>
 
