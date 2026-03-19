@@ -382,13 +382,14 @@ function togglePause() {
   if (btn) btn.innerHTML = paused ? '<i class="fa-solid fa-play"></i>' : '<i class="fa-solid fa-pause"></i>';
   if (!paused) gameLoop();
 }
+
 document.addEventListener('keydown', (e) => {
   state.keys[e.code] = true;
   if (e.code === 'KeyP') togglePause();
   if (e.code === 'Enter' && !state.running) {
     const startScreen = document.getElementById('screen-start');
     if (startScreen && !startScreen.classList.contains('hidden')) {
-      setInitials();
+      setInitials(); // setInitials ya valida
     } else {
       startGame();
     }
@@ -407,27 +408,10 @@ function startGame() {
   screenStart.classList.add('hidden');
   screenGameOver.classList.add('hidden');
   const nameEl = document.getElementById('player-name');
- if (nameEl) nameEl.textContent = playerInitials || '---';
-  paused = false;
-  const btnP = document.getElementById('btn-pause');
-  if (btnP) btnP.innerHTML = '<i class="fa-solid fa-pause"></i>';
-  enemyDir = 1; enemyMoveTimer = 0;
-  renderLeaderboard();
-  document.getElementById('score-bg').textContent = '0';
-  updateHUD(); renderLives(); spawnEnemies();
-  updatePlayerUI();
-  playBG();
-  gameLoop();
-}
-// --- Start ---
-function startGame() {
-  state.running = true; state.score = 0; state.lives = 3; state.level = 1;
-  state.playerX = 270; state.bullets = []; state.enemies = [];
-  bonus.active = false; bonus.timer = 0; bonus.nextSpawn = randomBonusDelay();
-  if (bonus.el) { bonus.el.remove(); bonus.el = null; }
-  board.querySelectorAll('.bullet,.enemy,.pixel-particle').forEach(el => el.remove());
-  screenStart.classList.add('hidden');
-  screenGameOver.classList.add('hidden');
+  if (nameEl) {
+    nameEl.textContent = playerInitials;
+    nameEl.style.cssText = 'color:#00b4d8;font-family:"Courier New",monospace;font-weight:bold;letter-spacing:3px;';
+  }
   paused = false;
   const btnP = document.getElementById('btn-pause');
   if (btnP) btnP.innerHTML = '<i class="fa-solid fa-pause"></i>';
