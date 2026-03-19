@@ -325,8 +325,14 @@ async function fetchRecord() {
 function renderLeaderboard() {
   const el = document.getElementById('record-display');
   if (!el) return;
-  if (!globalScores.length) { el.textContent = '---'; return; }
-  el.textContent = globalScores.map((s, i) => `${i+1}.${s.initials} ${s.score}`).join('  ');
+  if (!globalScores.length) { el.innerHTML = '<span style="color:#555">NO RECORDS</span>'; return; }
+  const colors  = ['#FFD700', '#C0C0C0', '#CD7F32'];
+  const sizes   = ['22px', '18px', '15px'];
+  el.innerHTML = globalScores.map((s, i) =>
+    `<span style="color:${colors[i]};font-size:${sizes[i]};margin:0 8px;letter-spacing:2px;">
+      ${i+1}. ${s.initials} <strong>${s.score}</strong>
+    </span>`
+  ).join('');
 }
 
 async function submitScore(score, initials) {
@@ -357,8 +363,20 @@ function updateHUD() {
 }
 
 // --- Input ---
+// --- Pausa ---
+let paused = false;
+
+function togglePause() {
+  if (!state.running) return;
+  paused = !paused;
+  const btn = document.getElementById('btn-pause');
+  if (btn) btn.innerHTML = paused ? '<i class="fa-solid fa-play"></i>' : '<i class="fa-solid fa-pause"></i>';
+  if (!paused) gameLoop();
+}
+
 document.addEventListener('keydown', (e) => {
   state.keys[e.code] = true;
+  if (e.code === 'KeyP') togglePause();
   if (e.code === 'Enter' && !state.running) {
     const startScreen = document.getElementById('screen-start');
     if (startScreen && !startScreen.classList.contains('hidden')) {
@@ -380,6 +398,9 @@ function startGame() {
   board.querySelectorAll('.bullet,.enemy,.pixel-particle').forEach(el => el.remove());
   screenStart.classList.add('hidden');
   screenGameOver.classList.add('hidden');
+  paused = false;
+  const btnP = document.getElementById('btn-pause');
+  if (btnP) btnP.innerHTML = '<i class="fa-solid fa-pause"></i>';
   enemyDir = 1; enemyMoveTimer = 0;
   renderLeaderboard();
   document.getElementById('score-bg').textContent = '0';  updateHUD(); renderLives(); spawnEnemies();
@@ -577,7 +598,7 @@ function endGame(win = false) {
 
 // --- Loop ---
 function gameLoop() {
-  if (!state.running) return;
+  if (!state.running || paused) return;
   movePlayer(); moveBullets(); moveEnemies();
   enemyShoot(); moveBonus(); checkCollisions(); checkLevel();
   requestAnimationFrame(gameLoop);
