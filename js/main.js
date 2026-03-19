@@ -380,7 +380,7 @@ document.addEventListener('keydown', (e) => {
   if (e.code === 'Enter' && !state.running) {
     const startScreen = document.getElementById('screen-start');
     if (startScreen && !startScreen.classList.contains('hidden')) {
-      setInitials();
+      setInitials(); // setInitials ya valida
     } else {
       startGame();
     }
@@ -577,9 +577,15 @@ let playerInitials = '???';
 
 function setInitials() {
   const input = document.getElementById('initials-input-start');
-  if (input) {
-    playerInitials = input.value.trim().toUpperCase().slice(0, 3) || '???';
+  const val = input ? input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '') : '';
+  if (val.length === 0) {
+    input.style.borderColor = '#ef4343';
+    input.placeholder = 'PON TUS INICIALES';
+    input.focus();
+    return;
   }
+  input.style.borderColor = '#c28a3e';
+  playerInitials = val.slice(0, 3);
   startGame();
 }
 
