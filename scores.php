@@ -16,32 +16,31 @@ function loadScores($file) {
 
 function saveScores($file, $scores) {
   usort($scores, fn($a, $b) => $b['score'] - $a['score']);
-  $scores = array_slice($scores, 0, 3);
+  $scores = array_slice($scores, 0, 50);
   file_put_contents($file, json_encode(['scores' => $scores]));
   return $scores;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $data = json_decode(file_get_contents('php://input'), true);
-  $score    = isset($data['score'])    ? intval($data['score'])           : 0;
-  $initials = isset($data['initials']) ? strtoupper(substr(preg_replace('/[^A-Z0-9]/i', '', $data['initials']), 0, 3)) : '???';
+  $data     = json_decode(file_get_contents('php://input'), true);
+  $score    = isset($data['score'])    ? intval($data['score']) : 0;
+  $initials = isset($data['initials']) ? strtoupper(substr(preg_replace('/[^A-Z0-9]/i', '', $data['initials']), 0, 4)) : '????';
 
   $scores = loadScores($file);
-
-  // Verificar si entra al top 3
-  $min = count($scores) < 3 ? 0 : $scores[count($scores)-1]['score'];
-  $qualifies = count($scores) < 3 || $score > $min;
+  $min    = count($scores) < 50 ? 0 : $scores[count($scores)-1]['score'];
+  $qualifies = count($scores) < 50 || $score > $min;
 
   if ($qualifies) {
-    $scores[] = ['score' => $score, 'initials' => $initials];
-    $scores = saveScores($file, $scores);
-    echo json_encode(['scores' => $scores, 'qualified' => true]);
+    $scores[] = ['score' => $score, 'initials' => $initials, 'date' => date('Y-m-d')];
+    $scores   = saveScores($file, $scores);
+    echo json_encode(['scores' => array_slice($scores, 0, 3), 'qualified' => true]);
   } else {
-    echo json_encode(['scores' => $scores, 'qualified' => false]);
+    echo json_encode(['scores' => array_slice($scores, 0, 3), 'qualified' => false]);
   }
 
 } else {
+  $limit  = isset($_GET['limit']) ? intval($_GET['limit']) : 3;
   $scores = loadScores($file);
-  echo json_encode(['scores' => $scores]);
+  echo json_encode(['scores' => array_slice($scores, 0, $limit)]);
 }
 ?>

@@ -598,12 +598,12 @@ function setInitials() {
   const val = input ? input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '') : '';
   if (val.length === 0) {
     input.style.borderColor = '#ef4343';
-    input.placeholder = 'PON TUS INICIALES';
+    input.placeholder = 'TUS INICIALES';
     input.focus();
     return;
   }
   input.style.borderColor = '#c28a3e';
-  playerInitials = val.slice(0, 3);
+  playerInitials = val.slice(0, 4);
   startGame();
 }
 
@@ -618,6 +618,53 @@ function endGame(win = false) {
   } else {
     fetchRecord();
   }
+}
+
+async function showLeaderboard() {
+  const wasPaused = paused;
+  if (state.running && !paused) togglePause();
+
+  let scores = [];
+  try {
+    const res = await fetch(SCORES_URL + '?limit=50');
+    const data = await res.json();
+    scores = data.scores || [];
+  } catch(e) { scores = globalScores; }
+
+  const colors = ['#FFD700','#C0C0C0','#CD7F32'];
+  const rows = scores.map((s, i) => {
+    const c = colors[i] || '#ede0cc';
+    const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}.`;
+    return `<tr style="color:${c}">
+      <td style="padding:3px 10px;text-align:right">${medal}</td>
+      <td style="padding:3px 16px;letter-spacing:3px">${s.initials}</td>
+      <td style="padding:3px 10px;text-align:right">${s.score}</td>
+      <td style="padding:3px 10px;color:#555;font-size:14px">${s.date || ''}</td>
+    </tr>`;
+  }).join('');
+
+  const modal = document.createElement('div');
+  modal.id = 'modal-lb';
+  modal.style.cssText = `position:absolute;inset:0;background:rgba(0,0,0,0.92);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px;overflow-y:auto;`;
+  modal.innerHTML = `
+    <h2 style="font-family:'VT323',monospace;font-size:36px;color:#c28a3e;letter-spacing:4px;margin-bottom:12px;">TOP 50</h2>
+    <table style="font-family:'VT323',monospace;font-size:20px;border-collapse:collapse;width:100%">
+      <thead><tr style="color:#8a7a65;font-size:16px">
+        <th style="padding:4px 10px">#</th>
+        <th style="padding:4px 16px">PLAYER</th>
+        <th style="padding:4px 10px">SCORE</th>
+        <th style="padding:4px 10px">DATE</th>
+      </tr></thead>
+      <tbody>${rows || '<tr><td colspan="4" style="text-align:center;color:#555;padding:20px">NO HAY RECORDS AÚN</td></tr>'}</tbody>
+    </table>
+    <button onclick="closeLeaderboard()" style="margin-top:16px;font-family:'VT323',monospace;font-size:24px;color:#ede0cc;background:#5c2e0e;border:2px solid #c28a3e;padding:8px 24px;cursor:pointer;letter-spacing:2px;">CERRAR</button>
+  `;
+  document.getElementById('game').appendChild(modal);
+}
+
+function closeLeaderboard() {
+  const modal = document.getElementById('modal-lb');
+  if (modal) modal.remove();
 }
 
 // --- Loop ---

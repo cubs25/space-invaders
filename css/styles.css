@@ -280,3 +280,28 @@ body {
   transition: opacity 0.15s;
 }
 #btn-pause:hover { opacity: 1; }
+#controls-bar {
+  display: flex;
+  gap: 8px;
+  padding: 6px 12px;
+  background: #0a0a2a;
+  border-bottom: 1px solid #1a1a4a;
+}
+
+#btn-pause-big, #btn-lb {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #ede0cc;
+  background: #4a7060;
+  border: 2px solid #c28a3e;
+  padding: 4px 16px;
+  cursor: pointer;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: background 0.15s, transform 0.1s;
+}
+
+#btn-pause-big:hover, #btn-lb:hover {
+  background: #5c2e0e;
+  transform: scale(1.05);
+}
