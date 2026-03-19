@@ -53,20 +53,22 @@
 <!-- Bottom bar -->
 <div id="bottom-bar">
   <span>SCORE: <strong id="bottom-score">0</strong></span>
-  <span>RECORD: <strong id="record-display">0</strong></span>
+  <span id="record-display" style="font-size:16px;letter-spacing:1px;"></span>
 </div>
 
-
-    <div id="screen-start" class="screen">
+<div id="screen-start" class="screen">
   <h1>SPACE INVADERS</h1>
-  <button onclick="startGame()" id="btn-start">PRESS START</button>
-  <p>o presiona <strong>ENTER</strong></p>
+  <p style="font-size:18px;color:#888;letter-spacing:2px;">TUS INICIALES</p>
+  <input id="initials-input-start" maxlength="3"
+    style="font-family:'VT323',monospace;font-size:48px;width:120px;text-align:center;
+    background:#0a0a2a;border:2px solid #c28a3e;color:#fff;letter-spacing:10px;margin:8px 0;"
+    onkeydown="if(event.key==='Enter')setInitials()"/>
+  <button onclick="setInitials()" id="btn-start">PRESS START</button>
 </div>
 <div id="screen-gameover" class="screen hidden">
   <h1>GAME OVER</h1>
   <p id="go-score"></p>
-  <button onclick="startGame()" id="btn-start">REINICIAR</button>
-  <p>o presiona <strong>ENTER</strong></p>
+  <p style="font-size:18px;color:#555;letter-spacing:2px;margin-top:8px;">ENTER para reiniciar</p>
 </div>
     </div>
     <script src="js/main.js"></script>
