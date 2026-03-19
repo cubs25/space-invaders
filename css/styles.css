@@ -59,7 +59,10 @@ body {
   font-size: 20px;
   letter-spacing: 2px;
 }
-
+#hud {
+  background: #7b6c5c;
+  border-bottom: 1px solid #5a4f45;
+}
 #board {
   position: relative;
   width: 100%;
@@ -221,7 +224,7 @@ body {
   align-items: center;
   gap: 6px;
   padding: 5px 12px;
-  background: #5c2e0e;
+  background: #582b20;
   border-bottom: 1px solid #3d1a08;
   font-size: 13px;
   letter-spacing: 1px;
