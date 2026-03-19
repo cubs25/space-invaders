@@ -410,7 +410,7 @@ function startGame() {
   const nameEl = document.getElementById('player-name');
   if (nameEl) {
     nameEl.textContent = playerInitials;
-    nameEl.style.cssText = 'color:#4a7060;font-family:"Pixelify Sans",monospace;font-weight:bold;letter-spacing:3px;';
+    nameEl.style.cssText = 'color:#4a7060;font-family:"jersey-20-regular",monospace;font-weight:bold;letter-spacing:3px;';
   }
   paused = false;
   const btnP = document.getElementById('btn-pause');
