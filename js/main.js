@@ -138,6 +138,7 @@ function spawnBonus() {
   // dir=-1 sale der va izquierda → sin flip (dientes apuntan izquierda)
   const flip = bonus.dir === 1 ? 'scaleX(-1)' : 'scaleX(1)';
   el.style.cssText = `position:absolute;top:12px;left:${bonus.x}px;cursor:pointer;z-index:5;transform:${flip};transform-origin:center center;`;
+  bonus.y = 12;
   board.appendChild(el);
   bonus.el = el;
 }
@@ -168,7 +169,95 @@ function checkBonusHit(b) {
   return false;
 }
 
-function showBonusPoints(x, y, pts) {
+// --- Curly del tiburón ---
+const sharkBullets = [];
+let sharkShootTimer = 0;
+const SHARK_SHOOT_INTERVAL = 180; // dispara cada ~3s cuando está activo
+
+function sharkShoot() {
+  if (!bonus.active) return;
+  sharkShootTimer++;
+  if (sharkShootTimer < SHARK_SHOOT_INTERVAL) return;
+  // solo dispara 1 de cada 3 veces que toca el intervalo (poco frecuente)
+  if (Math.random() > 0.33) { sharkShootTimer = 0; return; }
+  sharkShootTimer = 0;
+
+  const el = document.createElement('div');
+  el.classList.add('shark-bullet');
+  el.textContent = '〜';
+  el.style.cssText = `position:absolute;font-size:18px;color:#c28a3e;top:${bonus.y || 20}px;left:${bonus.x + 30}px;pointer-events:none;z-index:6;text-shadow:0 0 6px #ff8800;`;
+  board.appendChild(el);
+
+  sharkBullets.push({
+    el,
+    x: bonus.x + 30,
+    y: bonus.y || 20,
+    vx: bonus.dir * -1.5, // va hacia el jugador horizontalmente
+    vy: 1.5,
+    age: 0,
+  });
+}
+
+function moveSharkBullets() {
+  for (let i = sharkBullets.length - 1; i >= 0; i--) {
+    const b = sharkBullets[i];
+    b.age++;
+
+    // homing suave hacia el jugador
+    const targetX = state.playerX + 24;
+    const dx = targetX - b.x;
+    b.vx += dx * 0.008; // aceleración suave
+    b.vx = Math.max(-4, Math.min(4, b.vx)); // limitar velocidad
+    b.vy += 0.05; // gravedad leve
+
+    b.x += b.vx;
+    b.y += b.vy;
+
+    // wobble visual
+    const wobble = Math.sin(b.age * 0.3) * 3;
+    b.el.style.left = (b.x + wobble) + 'px';
+    b.el.style.top  = b.y + 'px';
+
+    // hit jugador
+    const px = state.playerX, py = board.clientHeight - 58;
+    const by = b.y;
+    if (b.x >= px && b.x <= px + 48 && by >= py - 38 && by <= py + 4) {
+      b.el.remove();
+      sharkBullets.splice(i, 1);
+      state.lives--;
+      playPlayerHit();
+      pixelFlash(state.playerX + 24, 45, state.lives);
+      renderLives();
+      if (state.lives <= 0) endGame();
+      continue;
+    }
+
+    // bala del jugador vs curly
+    for (let j = state.bullets.length - 1; j >= 0; j--) {
+      const pb = state.bullets[j];
+      if (!pb || pb.owner !== 'player') continue;
+      const pbx = pb.x, pby = board.clientHeight - pb.y;
+      if (Math.abs(pbx - b.x) < 16 && Math.abs(pby - b.y) < 16) {
+        b.el.remove();
+        sharkBullets.splice(i, 1);
+        pb.el.remove();
+        state.bullets[j] = null;
+        state.score += 75;
+        showBonusPoints(b.x, board.clientHeight - b.y, 75);
+        playBonus();
+        updateHUD();
+        break;
+      }
+    }
+    state.bullets = state.bullets.filter(Boolean);
+
+    // fuera de pantalla
+    if (b.y > board.clientHeight + 20 || b.age > 300) {
+      b.el.remove();
+      sharkBullets.splice(i, 1);
+    }
+  }
+}
   const el = document.createElement('div');
   el.textContent = '+' + pts;
   el.style.cssText = `position:absolute;left:${x}px;top:${y}px;color:#c28a3e;font-size:22px;font-family:'VT323',monospace;pointer-events:none;z-index:10;animation:floatUp 0.9s ease-out forwards;`;
@@ -408,13 +497,16 @@ function startGame() {
   state.playerX = 270; state.bullets = []; state.enemies = [];
   bonus.active = false; bonus.timer = 0; bonus.nextSpawn = randomBonusDelay();
   if (bonus.el) { bonus.el.remove(); bonus.el = null; }
+  sharkBullets.forEach(b => b.el.remove());
+  sharkBullets.length = 0;
+  sharkShootTimer = 0;
   board.querySelectorAll('.bullet,.enemy,.pixel-particle').forEach(el => el.remove());
   screenStart.classList.add('hidden');
   screenGameOver.classList.add('hidden');
   const nameEl = document.getElementById('player-name');
   if (nameEl) {
     nameEl.textContent = playerInitials;
-    nameEl.style.cssText = 'color:#e9d8c6;font-family:"Pixelify Sans",monospace;font-weight:bold;letter-spacing:3px;';
+    nameEl.style.cssText = 'color:#4a7060;font-family:"Pixelify Sans",monospace;font-weight:bold;letter-spacing:3px;';
   }
   paused = false;
   const btnP = document.getElementById('btn-pause');
@@ -671,7 +763,8 @@ function closeLeaderboard() {
 function gameLoop() {
   if (!state.running || paused) return;
   movePlayer(); moveBullets(); moveEnemies();
-  enemyShoot(); moveBonus(); checkCollisions(); checkLevel();
+  enemyShoot(); moveBonus(); sharkShoot(); moveSharkBullets();
+  checkCollisions(); checkLevel();
   requestAnimationFrame(gameLoop);
 }
 

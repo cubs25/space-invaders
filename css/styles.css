@@ -333,3 +333,17 @@ body {
   font-size: 16px;
   letter-spacing: 1px;
 }
+.shark-bullet {
+  position: absolute;
+  font-size: 18px;
+  color: #c28a3e;
+  pointer-events: none;
+  z-index: 6;
+  text-shadow: 0 0 6px #ff8800;
+  animation: wobbleBullet 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes wobbleBullet {
+  from { transform: rotate(-15deg) scaleX(1.2); }
+  to   { transform: rotate(15deg)  scaleX(0.8); }
+}
