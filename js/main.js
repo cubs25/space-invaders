@@ -407,7 +407,7 @@ function startGame() {
   screenStart.classList.add('hidden');
   screenGameOver.classList.add('hidden');
   const nameEl = document.getElementById('player-name');
-  if (nameEl) nameEl.textContent = playerInitials;
+ if (nameEl) nameEl.textContent = playerInitials || '---';
   paused = false;
   const btnP = document.getElementById('btn-pause');
   if (btnP) btnP.innerHTML = '<i class="fa-solid fa-pause"></i>';
