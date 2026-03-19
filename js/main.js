@@ -263,7 +263,7 @@ function moveSharkBullets() {
   el.style.cssText = `position:absolute;left:${x}px;top:${y}px;color:#c28a3e;font-size:22px;font-family:'VT323',monospace;pointer-events:none;z-index:10;animation:floatUp 0.9s ease-out forwards;`;
   board.appendChild(el);
   setTimeout(() => el.remove(), 900);
-}
+
 
 // --- Sonidos ---
 const AudioCtx = window.AudioContext || window.webkitAudioContext;
