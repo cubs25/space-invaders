@@ -258,13 +258,12 @@ function moveSharkBullets() {
     }
   }
 }
-function showBonusPoints(x, y, pts) {
   const el = document.createElement('div');
   el.textContent = '+' + pts;
   el.style.cssText = `position:absolute;left:${x}px;top:${y}px;color:#c28a3e;font-size:22px;font-family:'VT323',monospace;pointer-events:none;z-index:10;animation:floatUp 0.9s ease-out forwards;`;
   board.appendChild(el);
   setTimeout(() => el.remove(), 900);
-}
+ 
 
 // --- Sonidos ---
 const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -276,8 +275,10 @@ function getAudio() { if (!audioCtx) audioCtx = new AudioCtx(); return audioCtx;
 // --- Playlist ---
 const PLAYLIST = [
   { file: 'assets/sounds/Various_Artists - Darude - Sandstorm.mp3', label: 'Darude — Sandstorm' },
-  { file: 'assets/sounds/TechnoViking.mp3',                          label: 'Techno Viking' },
-  { file: 'assets/sounds/Magnus_the_Magnus_Area.mp3',                label: 'Magnus — The Magnus Area' },
+  { file: 'assets/sounds/TechnoViking.mp4',                          label: 'Techno Viking' },
+  { file: 'assets/sounds/Magnus_the_Magnus_Area.mp4',                label: 'Magnus the Magnus Area' },
+  { file: 'assets/sounds/ThereYouGo.mp3',                            label: 'There You Go' },
+  
 ];
 let trackIndex = 0;
 let bgAudio = new Audio(PLAYLIST[0].file);
@@ -714,12 +715,11 @@ function endGame(win = false) {
 }
 
 async function showLeaderboard() {
-  const wasPaused = paused;
   if (state.running && !paused) togglePause();
 
   let scores = [];
   try {
-    const res = await fetch(SCORES_URL + '?limit=50');
+    const res = await fetch(SCORES_URL + '?limit=50&t=' + Date.now());
     const data = await res.json();
     scores = data.scores || [];
   } catch(e) { scores = globalScores; }
@@ -727,30 +727,37 @@ async function showLeaderboard() {
   const colors = ['#FFD700','#C0C0C0','#CD7F32'];
   const rows = scores.map((s, i) => {
     const c = colors[i] || '#ede0cc';
-    const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}.`;
-    return `<tr style="color:${c}">
-      <td style="padding:3px 10px;text-align:right">${medal}</td>
-      <td style="padding:3px 16px;letter-spacing:3px">${s.initials}</td>
-      <td style="padding:3px 10px;text-align:right">${s.score}</td>
-      <td style="padding:3px 10px;color:#555;font-size:14px">${s.date || ''}</td>
+    const pos = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}`;
+    const dt = s.time ? `${s.date || ''} ${s.time}` : (s.date || '');
+    return `<tr style="color:${c};border-bottom:1px solid #1a1a2a">
+      <td style="padding:4px 8px;text-align:center;width:40px">${pos}</td>
+      <td style="padding:4px 12px;text-align:center;letter-spacing:3px;width:60px">${s.initials}</td>
+      <td style="padding:4px 12px;text-align:right;width:70px">${s.score}</td>
+      <td style="padding:4px 8px;text-align:center;color:#555;font-size:13px">${dt}</td>
     </tr>`;
   }).join('');
 
   const modal = document.createElement('div');
   modal.id = 'modal-lb';
-  modal.style.cssText = `position:absolute;inset:0;background:rgba(0,0,0,0.92);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px;overflow-y:auto;`;
+  modal.style.cssText = `position:absolute;inset:0;background:rgba(0,0,0,0.95);z-index:20;display:flex;flex-direction:column;align-items:center;padding:16px 8px 8px;overflow:hidden;`;
   modal.innerHTML = `
-    <h2 style="font-family:'VT323',monospace;font-size:36px;color:#c28a3e;letter-spacing:4px;margin-bottom:12px;">TOP 50</h2>
-    <table style="font-family:'VT323',monospace;font-size:20px;border-collapse:collapse;width:100%">
-      <thead><tr style="color:#8a7a65;font-size:16px">
-        <th style="padding:4px 10px">#</th>
-        <th style="padding:4px 16px">PLAYER</th>
-        <th style="padding:4px 10px">SCORE</th>
-        <th style="padding:4px 10px">DATE</th>
-      </tr></thead>
-      <tbody>${rows || '<tr><td colspan="4" style="text-align:center;color:#555;padding:20px">NO HAY RECORDS AÚN</td></tr>'}</tbody>
-    </table>
-    <button onclick="closeLeaderboard()" style="margin-top:16px;font-family:'VT323',monospace;font-size:24px;color:#ede0cc;background:#5c2e0e;border:2px solid #c28a3e;padding:8px 24px;cursor:pointer;letter-spacing:2px;">CERRAR</button>
+    <h2 style="font-family:'VT323',monospace;font-size:32px;color:#c28a3e;letter-spacing:4px;margin-bottom:8px;flex-shrink:0;">
+      <i class="fa-solid fa-trophy" style="color:#FFD700"></i> TOP 50
+    </h2>
+    <div style="width:100%;overflow-y:auto;flex:1;">
+      <table style="font-family:'VT323',monospace;font-size:18px;border-collapse:collapse;width:100%;table-layout:fixed;">
+        <thead style="position:sticky;top:0;background:#050510;">
+          <tr style="color:#8a7a65;font-size:14px;border-bottom:1px solid #c28a3e;">
+            <th style="padding:4px 8px;text-align:center">#</th>
+            <th style="padding:4px 12px;text-align:center">PLAYER</th>
+            <th style="padding:4px 12px;text-align:right">SCORE</th>
+            <th style="padding:4px 8px;text-align:center">FECHA</th>
+          </tr>
+        </thead>
+        <tbody>${rows || '<tr><td colspan="4" style="text-align:center;color:#555;padding:20px">NO HAY RECORDS AÚN</td></tr>'}</tbody>
+      </table>
+    </div>
+    <button onclick="closeLeaderboard()" style="flex-shrink:0;margin-top:8px;font-family:'VT323',monospace;font-size:22px;color:#ede0cc;background:#5c2e0e;border:2px solid #c28a3e;padding:6px 24px;cursor:pointer;letter-spacing:2px;">CERRAR</button>
   `;
   document.getElementById('game').appendChild(modal);
 }
