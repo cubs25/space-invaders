@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Space Invaders Game">
+    <title>Space Invaders</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+ <body>
+    <div id="game">
+
+      <!-- Marca de agua logo -->
+      <div id="watermark">
+        <svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
+          <path d="M450,9.4L68.5,229.7v440.6L450,890.6l381.5-220.3V229.7L450,9.4z M450,820.1L129.5,635.1V264.9L450,79.9
+            l320.5,185.1v128.2c-13.4-10.2-40.6-28-58.9-19.9c0,0,21.7,31.2,0,46.1c0,0-134.1,38.3-198,86c15.8-20.7,51.1-41.4,51.1-41.4
+            s-206-196.8-384.4-209.5c0,0,88.5,83.8,114.2,113.7c2,2.3-0.4,4.9-2,7.8c0,0,22,2.7,36.6,10.1l-14.2,10.5
+            c0,0,70.6,101.8,121.6,156.4c0,0,5.3,100.4-49.8,220c0,0,100.4-27.9,185.2-216.7c13.4-5.1,55.6-6.7,100.5-6.8
+            c-0.6,0.1-1,0.2-1,0.2c15.3,1.9-2.6,5.5-2.6,5.5c-8.6,0-2.3,4.6-2.3,4.6s17.6,13.6,26.2,24.7c0,0,3.7,4.6,4.4,10.6
+            c0,0,33-9.9,41.5-42.6c0.2-0.8,4.4-1.4,5.6-2.3c9.9,0.2,18.7,0.4,26.4,0.7v84.1L450,820.1z"/>
+        </svg>
+      </div>
+
+      <div id="hud">
+        <span>SCORE: <strong id="score">0</strong></span>
+        <span>NIVEL: <strong id="level">1</strong></span>
+        <span>VIDAS: <strong id="lives"></strong></span>
+      <button id="btn-mute" onclick="toggleMute()"><i class="fa-solid fa-volume-high"></i></button>
+     </div>
+
+<!-- Player de música -->
+<div id="music-player">
+  <button class="mp-btn" onclick="prevTrack()"><i class="fa-solid fa-backward-step"></i></button>
+  <button class="mp-btn" onclick="playBG()"><i class="fa-solid fa-play"></i></button>
+  <button class="mp-btn" onclick="pauseBG()"><i class="fa-solid fa-pause"></i></button>
+  <button class="mp-btn" onclick="nextTrack()"><i class="fa-solid fa-forward-step"></i></button>
+  <span id="track-label">Darude — Sandstorm</span>
+  <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume - 0.1)"><i class="fa-solid fa-chevron-down"></i></button>
+  <input type="range" id="vol-slider" min="0" max="100" value="40" oninput="setBGVolume(this.value/100)"/>
+  <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume + 0.1)"><i class="fa-solid fa-chevron-up"></i></button>
+</div>
+      <div id="board">
+        <div id="player"></div>
+      </div>
+
+    <!-- Score como marca de agua -->
+<div id="score-watermark">
+  <span id="score-bg">0</span>
+</div>
+
+<!-- Bottom bar -->
+<div id="bottom-bar">
+  <span>SCORE: <strong id="bottom-score">0</strong></span>
+  <span>RECORD: <strong id="record-display">0</strong></span>
+</div>
+
+
+    <div id="screen-start" class="screen">
+  <h1>SPACE INVADERS</h1>
+  <button onclick="startGame()" id="btn-start">PRESS START</button>
+  <p>o presiona <strong>ENTER</strong></p>
+</div>
+<div id="screen-gameover" class="screen hidden">
+  <h1>GAME OVER</h1>
+  <p id="go-score"></p>
+  <button onclick="startGame()" id="btn-start">REINICIAR</button>
+  <p>o presiona <strong>ENTER</strong></p>
+</div>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
