@@ -99,8 +99,8 @@ body {
 #score-bg {
   font-family: 'VT323', monospace;
   font-size: 140px;
-  color: #ffffff;
-  opacity: 0.04;
+  color: #4a7060;;
+  opacity: 0.08;
   letter-spacing: -4px;
   white-space: nowrap;
 }
