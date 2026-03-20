@@ -368,8 +368,7 @@ async function submitScore(score, initials) {
 }
 
 function qualifiesTop3(score) {
-  if (globalScores.length < 3) return true;
-  return score > globalScores[globalScores.length - 1].score;
+  return score > 0;
 }
 
 // --- HUD ---
@@ -410,7 +409,7 @@ function setInitials() {
   const val = input ? input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '') : '';
   if (val.length === 0) { input.style.borderColor = '#ef4343'; input.placeholder = 'TUS INICIALES'; input.focus(); return; }
   input.style.borderColor = '#c28a3e';
-  playerInitials = val.slice(0, 4);
+  playerInitials = val.slice(0, 6);
   startGame();
 }
 

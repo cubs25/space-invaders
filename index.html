@@ -10,8 +10,7 @@
 </head>
 <body>
   <div id="game">
-
-    <!-- Marca de agua logo -->
+ 
     <div id="watermark">
       <svg viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg">
         <path d="M450,9.4L68.5,229.7v440.6L450,890.6l381.5-220.3V229.7L450,9.4z M450,820.1L129.5,635.1V264.9L450,79.9
@@ -22,16 +21,14 @@
           c0,0,33-9.9,41.5-42.6c0.2-0.8,4.4-1.4,5.6-2.3c9.9,0.2,18.7,0.4,26.4,0.7v84.1L450,820.1z"/>
       </svg>
     </div>
-
-    <!-- HUD -->
+ 
     <div id="hud">
       <span>SCORE: <strong id="score">0</strong></span>
       <span>NIVEL: <strong id="level">1</strong></span>
       <span>PLAYER: <strong id="player-name">---</strong></span>
       <span>VIDAS: <strong id="lives"></strong></span>
     </div>
-
-    <!-- Player de música -->
+ 
     <div id="music-player">
       <button class="mp-btn" onclick="prevTrack()"><i class="fa-solid fa-backward-step"></i></button>
       <button class="mp-btn" onclick="playBG()"><i class="fa-solid fa-play"></i></button>
@@ -42,25 +39,15 @@
       <input type="range" id="vol-slider" min="0" max="100" value="40" oninput="setBGVolume(this.value/100)"/>
       <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume + 0.1)"><i class="fa-solid fa-chevron-up"></i></button>
     </div>
-
-    <!-- Controles -->
+ 
     <div id="controls-bar">
-      <button id="btn-pause-big" onclick="togglePause()">
-        <i class="fa-solid fa-pause"></i> PAUSA
-      </button>
-      <button id="btn-lb" onclick="showLeaderboard()">
-        <i class="fa-solid fa-trophy" style="color:#ad7d4b"></i> TOP 50
-      </button>
-      <button id="btn-mute" onclick="toggleMute()">
-        <i class="fa-solid fa-volume-high"></i> SONIDO
-      </button>
+      <button id="btn-pause-big" onclick="togglePause()"><i class="fa-solid fa-pause"></i> PAUSA</button>
+      <button id="btn-lb" onclick="showLeaderboard()"><i class="fa-solid fa-trophy" style="color:#ad7d4b"></i> TOP 50</button>
+      <button id="btn-mute" onclick="toggleMute()"><i class="fa-solid fa-volume-high"></i> SONIDO</button>
     </div>
-
-    <!-- Tablero de juego -->
+ 
     <div id="board">
       <div id="player"></div>
-
-      <!-- Overlay pausa -->
       <div id="pause-overlay" class="screen hidden">
         <h1 style="color:#c28a3e">PAUSA</h1>
         <p id="pause-player" style="font-size:24px;color:#ad7d4b;letter-spacing:4px;margin-top:8px;"></p>
@@ -68,48 +55,44 @@
         <button onclick="togglePause()" id="btn-start" style="margin-top:12px;">CONTINUAR</button>
       </div>
     </div>
-
-    <!-- Score como marca de agua -->
-    <div id="score-watermark">
-      <span id="score-bg">0</span>
-    </div>
-
-    <!-- Bottom bar -->
+ 
+    <div id="score-watermark"><span id="score-bg">0</span></div>
+ 
     <div id="bottom-bar">
       <span>SCORE: <strong id="bottom-score">0</strong></span>
       <span>RECORD: <span id="record-display"></span></span>
     </div>
-
+ 
     <!-- Pantalla inicio -->
     <div id="screen-start" class="screen">
       <h1>SPACE INVADERS</h1>
       <p style="font-size:18px;color:#888;letter-spacing:2px;">TUS INICIALES</p>
       <input id="initials-input-start" maxlength="6"
-        style="font-family:'VT323',monospace;font-size:48px;width:160px;text-align:center;
-        background:#0a0a2a;border:2px solid #c28a3e;color:#fff;letter-spacing:8px;margin:8px 0;"
+        style="font-family:'VT323',monospace;font-size:48px;width:200px;text-align:center;
+        background:#0a0a2a;border:2px solid #c28a3e;color:#fff;letter-spacing:6px;margin:8px 0;"
         onkeydown="if(event.key==='Enter')setInitials()"/>
       <button onclick="setInitials()" id="btn-start">PRESS START</button>
-      <p style="font-size:16px;color:#555;letter-spacing:2px;margin-top:8px;">
+      <button onclick="showLeaderboard()" style="font-family:'VT323',monospace;font-size:20px;letter-spacing:2px;color:#ede0cc;background:#4a7060;border:2px solid #c28a3e;padding:8px 24px;cursor:pointer;margin-top:0;">
+        <i class="fa-solid fa-trophy" style="color:#ad7d4b"></i> VER TABLA
+      </button>
+      <p style="font-size:16px;color:#555;letter-spacing:2px;margin-top:4px;">
         <i class="fa-solid fa-arrow-left"></i>
         <i class="fa-solid fa-arrow-right"></i> MOVER &nbsp;|&nbsp;
         <i class="fa-solid fa-arrow-up"></i> FIRE
       </p>
     </div>
-
+ 
     <!-- Pantalla game over -->
     <div id="screen-gameover" class="screen hidden">
-  <h1>GAME OVER</h1>
-  <p id="go-score"></p>
-  <button onclick="startGame()" id="btn-start" style="margin-top:12px;">VOLVER A JUGAR</button>
+      <h1>GAME OVER</h1>
+      <p id="go-score"></p>
+      <button onclick="startGame()" id="btn-start" style="margin-top:12px;">VOLVER A JUGAR</button>
+      <p style="font-size:16px;color:#555;letter-spacing:2px;margin-top:8px;">o presiona ENTER</p>
+    </div>
  
-  <p style="font-size:16px;color:#555;letter-spacing:2px;margin-top:8px;">o presiona ENTER</p>
-</div>
-
   </div>
-
+ 
   <script src="js/main.js"></script>
-
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-29F2G4LVRS"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -119,3 +102,4 @@
   </script>
 </body>
 </html>
+ 
