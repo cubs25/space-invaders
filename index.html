@@ -69,12 +69,14 @@
 
 <div id="screen-start" class="screen">
   <h1>SPACE INVADERS</h1>
-  <p style="font-size:18px;color:#ad7d4b;letter-spacing:2px;">TUS INICIALES</p>
-<input id="initials-input-start" maxlength="4"
-  style="font-family:'VT323',monospace;font-size:48px;width:160px;text-align:center;
-  background:#0a0a2a;border:2px solid #c28a3e;color:#fff;letter-spacing:8px;margin:8px 0;"
-  onkeydown="if(event.key==='Enter')setInitials()"/>
+  <p style="font-size:18px;color:#888;letter-spacing:2px;">TUS INICIALES</p>
+  <input id="initials-input-start" maxlength="4" .../>
   <button onclick="setInitials()" id="btn-start">PRESS START</button>
+  <p style="font-size:16px;color:#555;letter-spacing:2px;margin-top:8px;">
+    <i class="fa-solid fa-arrow-left"></i>
+    <i class="fa-solid fa-arrow-right"></i> MOVER &nbsp;|&nbsp;
+    <i class="fa-solid fa-arrow-up"></i> FIRE
+  </p>
 </div>
 <div id="screen-gameover" class="screen hidden">
   <h1>GAME OVER</h1>
