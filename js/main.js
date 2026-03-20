@@ -387,6 +387,14 @@ function togglePause() {
   paused = !paused;
   const btn = document.getElementById('btn-pause-big');
   if (btn) btn.innerHTML = paused ? '<i class="fa-solid fa-play"></i> PAUSA' : '<i class="fa-solid fa-pause"></i> PAUSA';
+  const overlay = document.getElementById('pause-overlay');
+  if (overlay) {
+    overlay.classList.toggle('hidden', !paused);
+    if (paused) {
+      document.getElementById('pause-player').textContent = '👾 ' + playerInitials;
+      document.getElementById('pause-score').textContent = 'SCORE: ' + state.score;
+    }
+  }
   if (!paused) gameLoop();
 }
 

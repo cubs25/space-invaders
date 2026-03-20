@@ -322,7 +322,14 @@ body {
   background: #3a5a50;
 }
 
-
+#btn-pause-big {
+  background: #c28a3e !important;
+  color: #050510 !important;
+  font-weight: bold;
+}
+#btn-pause-big:hover {
+  background: #FFD700 !important;
+}
 #btn-mute {
   border-right: none;
 }
