@@ -24,7 +24,7 @@ function saveScores($file, $scores) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data     = json_decode(file_get_contents('php://input'), true);
   $score    = isset($data['score']) ? intval($data['score']) : 0;
-  $initials = isset($data['initials']) ? strtoupper(substr(preg_replace('/[^A-Z0-9]/i', '', $data['initials']), 0, 4)) : '????';
+  $initials = isset($data['initials']) ? strtoupper(substr(preg_replace('/[^A-Z0-9]/i', '', $data['initials']), 0, 6)) : '????';
 
   $scores = loadScores($file);
 
