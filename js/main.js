@@ -335,7 +335,7 @@ let globalScores = [];
 
 async function fetchRecord() {
   try {
-    const res = await fetch(SCORES_URL);
+    const res = await fetch(SCORES_URL + '?limit=50');
     const data = await res.json();
     globalScores = data.scores || [];
   } catch(e) { globalScores = []; }
@@ -368,8 +368,7 @@ async function submitScore(score, initials) {
 }
 
 function qualifiesTop3(score) {
-  if (globalScores.length < 3) return true;
-  return score > globalScores[globalScores.length - 1].score;
+  return score > 0;
 }
 
 // --- HUD ---
