@@ -335,7 +335,7 @@ let globalScores = [];
 
 async function fetchRecord() {
   try {
-    const res = await fetch(SCORES_URL);
+    const res = await fetch(SCORES_URL + '?limit=50');
     const data = await res.json();
     globalScores = data.scores || [];
   } catch(e) { globalScores = []; }
@@ -348,7 +348,7 @@ function renderLeaderboard() {
   if (!globalScores.length) { el.innerHTML = '<span style="color:#555">NO RECORDS</span>'; return; }
   const colors = ['#FFD700', '#C0C0C0', '#CD7F32'];
   const sizes = ['22px', '18px', '15px'];
-  el.innerHTML = globalScores.map((s, i) =>
+  el.innerHTML = globalScores.slice(0, 3).map((s, i) =>
     `<span style="color:${colors[i]};font-size:${sizes[i]};margin:0 8px;letter-spacing:2px;">${i+1}. ${s.initials} <strong>${s.score}</strong></span>`
   ).join('');
 }
