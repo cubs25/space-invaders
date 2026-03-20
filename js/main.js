@@ -335,7 +335,7 @@ let globalScores = [];
 
 async function fetchRecord() {
   try {
-    const res = await fetch(SCORES_URL + '?limit=50');
+    const res = await fetch(SCORES_URL);
     const data = await res.json();
     globalScores = data.scores || [];
   } catch(e) { globalScores = []; }
@@ -368,7 +368,8 @@ async function submitScore(score, initials) {
 }
 
 function qualifiesTop3(score) {
-  return score > 0;
+  if (globalScores.length < 3) return true;
+  return score > globalScores[globalScores.length - 1].score;
 }
 
 // --- HUD ---
@@ -386,14 +387,6 @@ function togglePause() {
   paused = !paused;
   const btn = document.getElementById('btn-pause-big');
   if (btn) btn.innerHTML = paused ? '<i class="fa-solid fa-play"></i> PAUSA' : '<i class="fa-solid fa-pause"></i> PAUSA';
-  const overlay = document.getElementById('pause-overlay');
-  if (overlay) {
-    overlay.classList.toggle('hidden', !paused);
-    if (paused) {
-      document.getElementById('pause-player').textContent = '👾 ' + playerInitials;
-      document.getElementById('pause-score').textContent = 'SCORE: ' + state.score;
-    }
-  }
   if (!paused) gameLoop();
 }
 
@@ -417,7 +410,7 @@ function setInitials() {
   const val = input ? input.value.trim().toUpperCase().replace(/[^A-Z0-9]/g, '') : '';
   if (val.length === 0) { input.style.borderColor = '#ef4343'; input.placeholder = 'TUS INICIALES'; input.focus(); return; }
   input.style.borderColor = '#c28a3e';
-  playerInitials = val.slice(0, 6);
+  playerInitials = val.slice(0, 4);
   startGame();
 }
 
@@ -618,6 +611,16 @@ function endGame(win = false) {
   screenGameOver.querySelector('h1').textContent = win ? '¡GANASTE!' : 'GAME OVER';
   const goScore = document.getElementById('go-score');
   if (goScore) goScore.textContent = 'SCORE: ' + state.score;
+  // mostrar botón ver tabla
+  let btnLb = document.getElementById('btn-go-lb');
+  if (!btnLb) {
+    btnLb = document.createElement('button');
+    btnLb.id = 'btn-go-lb';
+    btnLb.onclick = () => { closeLeaderboard(); showLeaderboard(); };
+    btnLb.style.cssText = 'font-family:"VT323",monospace;font-size:22px;color:#ede0cc;background:#4a7060;border:2px solid #c28a3e;padding:8px 24px;cursor:pointer;letter-spacing:2px;margin-top:6px;';
+    btnLb.innerHTML = '<i class="fa-solid fa-trophy" style="color:#ad7d4b"></i> VER TABLA';
+    screenGameOver.appendChild(btnLb);
+  }
   if (qualifiesTop3(state.score)) {
     submitScore(state.score, playerInitials).then(() => renderLeaderboard());
   } else { fetchRecord(); }
@@ -638,9 +641,9 @@ async function showLeaderboard() {
     const c = colors[i] || '#ede0cc';
     const pos = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}`;
     const dt = s.time ? `${s.date || ''} ${s.time}` : (s.date || '');
-    return `<tr style="color:${c};border-bottom:1px solid #1a1a2a">
+    return `<tr style="color:${c};border-bottom:1px solid #333">
       <td style="padding:4px 8px;text-align:center;width:40px">${pos}</td>
-      <td style="padding:4px 12px;text-align:center;letter-spacing:3px;width:60px">${s.initials}</td>
+      <td style="padding:4px 12px;text-align:center;letter-spacing:3px;width:70px;text-decoration:underline;text-underline-offset:3px;">${s.initials}</td>
       <td style="padding:4px 12px;text-align:right;width:70px">${s.score}</td>
       <td style="padding:4px 8px;text-align:center;color:#555;font-size:13px">${dt}</td>
     </tr>`;
@@ -648,15 +651,18 @@ async function showLeaderboard() {
 
   const modal = document.createElement('div');
   modal.id = 'modal-lb';
-  modal.style.cssText = `position:absolute;inset:0;background:rgba(0,0,0,0.95);z-index:20;display:flex;flex-direction:column;align-items:center;padding:16px 8px 8px;overflow:hidden;`;
+  modal.style.cssText = `position:absolute;inset:0;background:rgba(0,0,0,0.95);z-index:20;display:flex;flex-direction:column;align-items:center;padding:8px 8px 8px;overflow:hidden;`;
   modal.innerHTML = `
-    <h2 style="font-family:'VT323',monospace;font-size:32px;color:#c28a3e;letter-spacing:4px;margin-bottom:8px;flex-shrink:0;">
-      <i class="fa-solid fa-trophy" style="color:#FFD700"></i> TOP 50
-    </h2>
+    <div style="width:100%;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;margin-bottom:4px;">
+      <h2 style="font-family:'VT323',monospace;font-size:32px;color:#c28a3e;letter-spacing:4px;margin:0;">
+        <i class="fa-solid fa-trophy" style="color:#FFD700"></i> TOP 50
+      </h2>
+      <button onclick="closeLeaderboard()" style="background:none;border:none;color:#8a7a65;font-size:22px;cursor:pointer;padding:4px 8px;line-height:1;transition:color 0.15s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#8a7a65'">✕</button>
+    </div>
     <div style="width:100%;overflow-y:auto;flex:1;">
       <table style="font-family:'VT323',monospace;font-size:18px;border-collapse:collapse;width:100%;table-layout:fixed;">
         <thead style="position:sticky;top:0;background:#050510;">
-          <tr style="color:#8a7a65;font-size:14px;border-bottom:1px solid #c28a3e;">
+          <tr style="color:#8a7a65;font-size:14px;border-bottom:2px solid #c28a3e;">
             <th style="padding:4px 8px;text-align:center">#</th>
             <th style="padding:4px 12px;text-align:center">PLAYER</th>
             <th style="padding:4px 12px;text-align:right">SCORE</th>
@@ -666,7 +672,6 @@ async function showLeaderboard() {
         <tbody>${rows || '<tr><td colspan="4" style="text-align:center;color:#555;padding:20px">NO HAY RECORDS AÚN</td></tr>'}</tbody>
       </table>
     </div>
-    <button onclick="closeLeaderboard()" style="flex-shrink:0;margin-top:8px;font-family:\'VT323\',monospace;font-size:22px;color:#ede0cc;background:#5c2e0e;border:2px solid #c28a3e;padding:6px 24px;cursor:pointer;letter-spacing:2px;">CERRAR</button>
   `;
   document.getElementById('game').appendChild(modal);
 }
