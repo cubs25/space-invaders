@@ -396,3 +396,401 @@ body {
     transform: rotate(15deg) scaleX(0.8);
   }
 }
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20&family=VT323&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'VT323', monospace;
+  color: #fff;
+  transform: scale(0.85);
+  transform-origin: center center;
+}
+
+#game {
+  position: relative;
+  width: 620px;
+  height: 740px;
+  background: #050510;
+  border: 1px solid #1a1a4a;
+  overflow: hidden;
+}
+
+#watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  height: 340px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#watermark svg {
+  width: 100%;
+  height: 100%;
+  fill: #ffffff;
+}
+
+#hud {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px;
+  background: #34343d;
+
+  border-bottom: 1px solid #5a4f45;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+#board {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 160px);
+  z-index: 1;
+}
+
+#bottom-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: #0a0a2a;
+  border-top: 1px solid #1a1a4a;
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+#bottom-bar {
+  min-height: 36px;
+  align-items: center;
+}
+
+#bottom-bar strong {
+  color: #ef4343;
+}
+
+#score-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  text-align: center;
+}
+
+#score-bg {
+  font-family: 'VT323', monospace;
+  font-size: 140px;
+  color: #4a7060;
+  ;
+  opacity: 0.3;
+  letter-spacing: -4px;
+  white-space: nowrap;
+}
+
+#player {
+  position: absolute;
+  bottom: 20px;
+  width: 48px;
+  height: 38px;
+}
+
+.enemy {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  z-index: 2;
+}
+
+.bullet {
+  position: absolute;
+  width: 4px;
+  height: 16px;
+  background: #89d4ea;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.bullet-enemy {
+  background: #ef4343;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.85);
+  gap: 16px;
+  z-index: 10;
+}
+
+.screen h1 {
+  font-size: 48px;
+  letter-spacing: 6px;
+  color: #ef4343;
+}
+
+.screen p {
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #aaa;
+}
+
+.hidden {
+  display: none;
+}
+
+.life-icon {
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+
+#go-score {
+  font-size: 20px;
+  color: #c28a3e;
+  letter-spacing: 3px;
+}
+
+#bonus-ship {
+  filter: drop-shadow(0 0 4px #c28a3e);
+}
+
+@keyframes pixelFly {
+  0% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--dx), var(--dy));
+    opacity: 0;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+#btn-mute {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+#btn-mute:hover {
+  opacity: 1;
+}
+
+#btn-start {
+  font-family: 'VT323', monospace;
+  font-size: 28px;
+  letter-spacing: 3px;
+  color: #ede0cc;
+  background: #4a7060;
+  padding: 12px 36px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+#btn-start:hover {
+  background: #4a7060;
+  transform: scale(1.08);
+}
+
+#btn-start:active {
+  background: #8a7a65;
+  transform: scale(0.96);
+}
+
+#music-player {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: #582b20;
+  border-bottom: 1px solid #3d1a08;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #ede0cc;
+  font-family: 'VT323', monospace;
+}
+
+.mp-btn {
+  background: none;
+  border: 1px solid #8a4a1e;
+  color: #ede0cc;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.mp-btn:hover {
+  color: #fff;
+  border-color: #c28a3e;
+}
+
+#track-label {
+  flex: 1;
+  font-size: 16px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: 1px;
+}
+
+.mp-btn {
+  background: none;
+  border: 1px solid #1a1a4a;
+  color: #aaa;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s, border-color 0.15s;
+  clip-path: polygon(4px 0%, 100% 0%, calc(100% - 4px) 100%, 0% 100%);
+}
+
+.mp-btn:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+#vol-slider {
+  width: 60px;
+  height: 3px;
+  accent-color: #ad7d4b;
+  cursor: pointer;
+}
+
+
+#btn-pause {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+#btn-pause:hover {
+  opacity: 1;
+}
+
+#controls-bar {
+  display: flex;
+  gap: 0;
+  background: #4a7060;
+  border-bottom: 1px solid #3a5a50;
+}
+
+#btn-pause-big,
+#btn-lb,
+#btn-mute {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: #fff;
+  background: transparent;
+  border: none;
+  border-right: 1px solid #3a5a50;
+  padding: 6px 20px;
+  cursor: pointer;
+  flex: 1;
+  transition: background 0.15s;
+}
+
+#btn-pause-big:hover,
+#btn-lb:hover,
+#btn-mute:hover {
+  background: #3a5a50;
+}
+
+#btn-pause-big {
+  background: #c28a3e !important;
+  color: #050510 !important;
+  font-weight: bold;
+}
+
+#btn-pause-big:hover {
+  background: #FFD700 !important;
+}
+
+#btn-mute {
+  border-right: none;
+}
+
+#record-display {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.shark-bullet {
+  position: absolute;
+  font-size: 18px;
+  color: #c28a3e;
+  pointer-events: none;
+  z-index: 6;
+  text-shadow: 0 0 6px #ff8800;
+  animation: wobbleBullet 0.3s ease-in-out infinite alternate;
+}
+
+@keyframes wobbleBullet {
+  from {
+    transform: rotate(-15deg) scaleX(1.2);
+  }
+
+  to {
+    transform: rotate(15deg) scaleX(0.8);
+  }
+}
