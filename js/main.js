@@ -25,14 +25,14 @@ function makeEnemySVG(color, level, row) {
     svg = row % 2 === 0 ? ENEMY_SVG : ENEMY_SVG2;
     c = LEVEL3_COLORS[row % LEVEL3_COLORS.length];
   }
-  else if (level === 4) { svg = ENEMY_SVG5; c = 'rgba(255,255,255,0.6)'; }
+  else if (level === 4) { svg = ENEMY_SVG5; c = null; }
   else { svg = ENEMY_SVG; c = color; }
   const vb = level === 4 ? '0 0 348 612' : '0 0 262.8 210.6';
   const sh = level === 4 ? '52' : '36';
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="36" height="${sh}">
     <style>.f1{animation:sw 0.6s steps(1) infinite}.f2{animation:sw 0.6s steps(1) infinite reverse}@keyframes sw{0%,49%{opacity:1}50%,100%{opacity:0}}</style>
-    <g class="f1" fill="${c}">${svg.frame1}</g>
-    <g class="f2" fill="${c}">${svg.frame2}</g>
+    <g class="f1" ${c ? `fill="${c}"` : ""}>${svg.frame1}</g>
+    <g class="f2" ${c ? `fill="${c}"` : ""}>${svg.frame2}</g>
   </svg>`;
 }
 
@@ -498,7 +498,7 @@ function shootPlayer() {
 
 // --- Spawn enemigos ---
 function spawnEnemies() {
-  const config = { 1: { rows: 3, cols: 8 }, 2: { rows: 3, cols: 10 }, 3: { rows: 4, cols: 10 }, 4: { rows: 5, cols: 10 } };
+  const config = { 1: { rows: 3, cols: 8 }, 2: { rows: 3, cols: 10 }, 3: { rows: 4, cols: 10 }, 4: { rows: 4, cols: 10 } };
   const { rows, cols } = config[state.level];
   const color = LEVEL_COLORS[state.level];
   for (let r = 0; r < rows; r++) {
