@@ -741,3 +741,24 @@ player.style.cssText = 'position:absolute;bottom:20px;width:48px;height:38px;';
 fetchRecord();
 updatePlayerUI();
 screenStart.classList.remove('hidden');
+
+// --- Controles táctiles móvil ---
+(function () {
+  const btnLeft  = document.getElementById('touch-left');
+  const btnRight = document.getElementById('touch-right');
+  const btnFire  = document.getElementById('touch-fire');
+  if (!btnLeft) return;
+
+  // Mover izquierda
+  btnLeft.addEventListener('touchstart',  (e) => { e.preventDefault(); state.keys['ArrowLeft'] = true; },  { passive: false });
+  btnLeft.addEventListener('touchend',    (e) => { e.preventDefault(); state.keys['ArrowLeft'] = false; }, { passive: false });
+  btnLeft.addEventListener('touchcancel', (e) => { state.keys['ArrowLeft'] = false; });
+
+  // Mover derecha
+  btnRight.addEventListener('touchstart',  (e) => { e.preventDefault(); state.keys['ArrowRight'] = true; },  { passive: false });
+  btnRight.addEventListener('touchend',    (e) => { e.preventDefault(); state.keys['ArrowRight'] = false; }, { passive: false });
+  btnRight.addEventListener('touchcancel', (e) => { state.keys['ArrowRight'] = false; });
+
+  // Disparar
+  btnFire.addEventListener('touchstart', (e) => { e.preventDefault(); if (state.running) shootPlayer(); }, { passive: false });
+})();
