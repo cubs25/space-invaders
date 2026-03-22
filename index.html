@@ -23,30 +23,35 @@
   <link rel="icon" type="image/png" sizes="256x256" href="assets/favicons/favicon-256x256.png">
   <link rel="manifest" href="assets/favicons/site.webmanifest">
   <meta name="msapplication-TileImage" content="assets/favicons/mstile-144x144.png">
-
+  <!-- Primary -->
   <title>Space 25 — cubs25.com/space-invaders</title>
-  <meta name="description" content="Space Invaders 2026 / 4 niveles, tabla de ganadores global ¡Rompe el Record!">
+  <meta name="description" content="Space Invaders 2026 / 6 niveles, tabla de ganadores global ¡Rompe el Record!">
   <meta name="author" content="cubs25">
   <meta name="keywords" content="space invaders, juego, arcade, retro, cubs25">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://cubs25.com/space-invaders/">
 
+  <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://cubs25.com/space-invaders/">
   <meta property="og:title" content="Space25 — cubs25">
-  <meta property="og:description" content="Juego clásico Space Invaders con 4 niveles, tabla de ganadores global y música. ¿Puedes romper el record?">
+  <meta property="og:description"
+    content="Juego clásico Space Invaders con 4 niveles, tabla de ganadores global y música. ¿Puedes romper el record?">
   <meta property="og:image" content="https://cubs25.com/space-invaders/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="es_MX">
   <meta property="og:site_name" content="cubs25">
 
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://cubs25.com/space-invaders/">
   <meta name="twitter:title" content="Space25 — cubs25">
-  <meta name="twitter:description" content="Juego clásico Space Invaders con 4 niveles, tabla de ganadores global y música. ¿Puedes romper el record?">
+  <meta name="twitter:description"
+    content="Juego clásico Space Invaders con 4 niveles, tabla de ganadores global y música. ¿Puedes romper el record?">
   <meta name="twitter:image" content="https://cubs25.com/space-invaders/assets/og-image.png">
 
+  <!-- Theme -->
   <meta name="theme-color" content="#050510">
 
   <link rel="stylesheet" href="css/styles.css">
@@ -80,24 +85,27 @@
       <button class="mp-btn" onclick="pauseBG()"><i class="fa-solid fa-pause"></i></button>
       <button class="mp-btn" onclick="nextTrack()"><i class="fa-solid fa-forward-step"></i></button>
       <span id="track-label">Darude — Sandstorm</span>
-      <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume - 0.1)"><i class="fa-solid fa-chevron-down"></i></button>
+      <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume - 0.1)"><i
+          class="fa-solid fa-chevron-down"></i></button>
       <input type="range" id="vol-slider" min="0" max="100" value="40" oninput="setBGVolume(this.value/100)" />
-      <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume + 0.1)"><i class="fa-solid fa-chevron-up"></i></button>
+      <button class="mp-btn vol-btn" onclick="setBGVolume(bgAudio.volume + 0.1)"><i
+          class="fa-solid fa-chevron-up"></i></button>
     </div>
 
     <div id="controls-bar">
       <button id="btn-pause-big" onclick="togglePause()"><i class="fa-solid fa-pause"></i> PAUSA</button>
-      <button id="btn-lb" onclick="showLeaderboard()"><i class="fa-solid fa-trophy" style="color:#ad7d4b"></i> TOP 50</button>
+      <button id="btn-lb" onclick="showLeaderboard()"><i class="fa-solid fa-trophy" style="color:#ad7d4b"></i> TOP
+        50</button>
       <button id="btn-mute" onclick="toggleMute()"><i class="fa-solid fa-volume-high"></i> SONIDO</button>
     </div>
 
     <div id="board">
       <div id="player"></div>
       <div id="pause-overlay" class="screen hidden">
-        <h1 class="pause-title">PAUSA</h1>
-        <p id="pause-player" class="pause-player"></p>
-        <p id="pause-score" class="pause-score"></p>
-        <button onclick="togglePause()" id="btn-start">CONTINUAR</button>
+        <h1 style="color:#c28a3e">PAUSA</h1>
+        <p id="pause-player" style="font-size:24px;color:#ad7d4b;letter-spacing:4px;margin-top:8px;"></p>
+        <p id="pause-score" style="font-size:28px;color:#FFD700;letter-spacing:3px;"></p>
+        <button onclick="togglePause()" id="btn-start" style="margin-top:12px;">CONTINUAR</button>
       </div>
     </div>
 
@@ -110,53 +118,36 @@
 
     <!-- Pantalla inicio -->
     <div id="screen-start" class="screen">
-      <div id="start-cover">
-        <img src="assets/og-image.png" alt="Space25">
-        <div id="start-cover-overlay"></div>
-      </div>
-      <div id="start-body">
-        <h1 id="start-title">SPACE25</h1>
-        <p id="start-subtitle">cubs25.com &nbsp;·&nbsp; 4 NIVELES &nbsp;·&nbsp; TOP 50 GLOBAL</p>
-        <p class="start-label">TUS INICIALES</p>
-        <input id="initials-input-start" maxlength="6" placeholder="???"
-          onkeydown="if(event.key==='Enter')setInitials()" />
-        <button onclick="setInitials()" id="btn-start">PRESS START</button>
-        <button id="start-ver-tabla" onclick="showLeaderboard()">
-          <i class="fa-solid fa-trophy"></i> VER TABLA
-        </button>
-        <div id="start-controls">
-          <div class="ctrl-row">
-            <span class="ctrl-key">←</span>
-            <span class="ctrl-key">→</span>
-            <span class="ctrl-label">Mover</span>
-          </div>
-          <div class="ctrl-row">
-            <span class="ctrl-key">SPACE</span>
-            <span class="ctrl-label">Disparar</span>
-          </div>
-          <div class="ctrl-row">
-            <span class="ctrl-key">P</span>
-            <span class="ctrl-label">Pausa</span>
-          </div>
-          <div class="ctrl-row">
-            <span class="ctrl-key">ENTER</span>
-            <span class="ctrl-label">Iniciar</span>
-          </div>
-        </div>
-      </div>
+      <h1>SPACE25</h1>
+      <p style="font-size:18px;color:#888;letter-spacing:2px;">TUS INICIALES</p>
+      <input id="initials-input-start" maxlength="6" style="font-family:'VT323',monospace;font-size:48px;width:200px;text-align:center;
+        background:#0a0a2a;border:2px solid #c28a3e;color:#fff;letter-spacing:6px;margin:8px 0;"
+        onkeydown="if(event.key==='Enter')setInitials()" />
+      <button onclick="setInitials()" id="btn-start">PRESS START</button>
+      <button onclick="showLeaderboard()"
+        style="font-family:'VT323',monospace;font-size:20px;letter-spacing:2px;color:#ede0cc;background:#4a7060;border:2px solid #c28a3e;padding:8px 24px;cursor:pointer;margin-top:0;">
+        <i class="fa-solid fa-trophy" style="color:#ad7d4b"></i> VER TABLA
+      </button>
+      <p style="font-size:16px;color:#555;letter-spacing:2px;margin-top:4px;">
+        <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-arrow-right"></i> MOVER &nbsp;|&nbsp;
+        <i class="fa-solid fa-arrow-up"></i> FIRE
+      </p>
     </div>
 
     <!-- Pantalla game over -->
     <div id="screen-gameover" class="screen hidden">
       <h1>GAME OVER</h1>
       <p id="go-score"></p>
-      <button onclick="startGame()" id="btn-start">VOLVER A JUGAR</button>
-      <p class="go-hint">o presiona ENTER</p>
+      <button onclick="startGame()" id="btn-start" style="margin-top:12px;">VOLVER A JUGAR</button>
+      <p style="font-size:16px;color:#555;letter-spacing:2px;margin-top:8px;">o presiona ENTER</p>
     </div>
 
   </div>
 
   <script src="js/main.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-29F2G4LVRS"></script>
+
 </body>
 
 </html>
