@@ -14,6 +14,11 @@ const ENEMY_SVG4 = {
   frame2: `<rect x="101.8" y="49.2" fill="#53e01e" width="87.2" height="20"/><path fill="#53e01e" d="M104.2,98.6V115h18.4V98.6h12.2V115h18.4V98.6h12.4V115H184V98.6V83.1h15.9v-6.7l0,0V41.9l0,0v-7.1h-16V19.4 h-79.8v15.4H88.4V51l0,0v16l0,0v16.2h15.8C104.2,83.2,104.2,98.6,104.2,98.6z M183.6,50.9v16H152v-16H183.6z M104.7,50.9h31.2v16 h-31.2V50.9z"/><polygon fill="#53e01e" points="221.5,109.1 221.5,125.6 183.8,125.6 183.8,141.3 104.7,141.3 104.7,125.6 67,125.6 67,109.1 44.2,109.1 44.2,125.6 44.2,127.5 44.2,141.8 104.2,141.8 104.2,157.3 44.2,157.3 44.2,171.6 44.2,173.5 44.2,190 67,190 67,173.5 104.7,173.5 104.7,157.4 183.8,157.4 183.8,173.5 221.5,173.5 221.5,190 244.3,190 244.3,173.5 244.3,171.6 244.3,157.3 183.9,157.3 183.9,141.8 244.3,141.8 244.3,127.5 244.3,125.6 244.3,109.1"/>`
 };
 
+const ENEMY_SVG5 = {
+  frame1: `<g> <rect x="147.3" y="432.2" fill="#434951" width="55.9" height="40.8"/> <path d="M206.1,476h-61.9v-46.8h61.9V476z M150.3,470h49.9v-34.8h-49.9V470z"/> </g> <g> <polygon fill="#434951" points="117.3,429.6 99.7,429.6 99.7,459.2 117.3,459.2 250.7,459.2 250.7,429.9 231.3,429.9 231.3,367.5 117.8,367.5 "/> <path d="M254.7,463.2H95.7v-37.6h17.6l0.4-62.1h121.5v62.3h19.4V463.2z M103.7,455.2h142.9v-21.3h-19.4v-62.3H121.7l-0.4,62.1 h-17.6V455.2z"/> </g> <rect x="105.2" y="301" fill="#434951" width="140" height="130"/> <line x1="168.1" y1="410.9" x2="182.3" y2="410.9"/> <g> <g> <polyline fill="#434951" points="89.4,262.5 70.5,262.5 70.5,243.4 51.7,243.4 51.7,262.5 70.5,262.5 70.5,280.7 89.2,280.7 89.2,287.3 89.2,297.5 89.2,305.2 138.7,305.2 138.7,318.5 214.8,318.5 214.8,304.3 262.8,304.3 262.8,297.5 262.8,286.5 262.8,280.7 281.7,280.7 281.7,262.5 300.4,262.5 300.4,244.7 281.7,244.7 281.7,262.5 263.1,262.5 263.1,171.2 249.9,171.2 249.9,85.1 230,85.1 230,65.2 205.6,65.2 205.6,46.2 145,46.2 145,65.2 119.7,65.2 119.7,85.1 102.9,85.1 102.9,171.2 89.4,171.2 89.4,262.5 "/> <path d="M217.8,321.5h-82v-13.3H86.2v-24.5H67.5v-18.3H48.7v-25.1h24.7v19.1h12.9v-91.3h13.5V82.1h16.8V62.2H142V43.2h66.7v19.1 H233v19.9h19.9v86.1h13.2v91.3h12.6v-17.8h24.7v23.8h-18.7v18.3h-18.8v23.6h-48.1V321.5z M141.7,315.5h70v-14.2h48.1v-23.6h18.8 v-12.3h-18.6v-91.3h-13.2V88.1H227V68.2h-24.4V49.2H148v19.1h-25.3v19.9h-16.8v86.1H92.4v91.3H73.5v12.3h18.7v24.5h49.6V315.5z M284.7,259.5h12.7v-11.8h-12.7V259.5z M54.7,259.5h12.7v-13.1H54.7V259.5z"/> </g> <g> <rect x="304.4" y="226" fill="#434951" width="18.7" height="17.8"/> <path d="M326.1,246.8h-24.7V223h24.7V246.8z M307.4,240.8h12.7V229h-12.7V240.8z"/> </g> <g> <rect x="27.3" y="226" fill="#434951" width="18.7" height="17.8"/> <path d="M49,246.8H24.3V223H49V246.8z M30.3,240.8H43V229H30.3V240.8z"/> </g> <polygon fill="#6A7077" points="233.8,158.3 222.3,158.3 222.3,118.2 212.2,118.2 212.2,166.9 217.9,166.9 217.9,215.9 192,215.9 192,262.5 233.8,262.5 233.8,241.8 233.8,241.8 "/> <polygon fill="#6A7077" points="146.4,101 124.8,101 124,101 113.3,101 113.3,189.5 124.8,189.5 124.8,158.6 146.4,158.6 "/> <g> <g> <polygon points="238.9,368.4 248.4,368.4 248.9,431 239.4,431 "/> <rect x="243.1" y="305.7" width="9.5" height="62.7"/> </g> <g> <rect x="99.5" y="305.7" width="9.5" height="62.7"/> <rect x="103.7" y="368.4" width="9.5" height="62.7"/> </g> </g> <rect x="158.4" y="299.7" fill="#6A7077" width="49.9" height="14"/> <rect x="208.3" y="285.8" fill="#6A7077" width="49.9" height="14"/> </g> <g> <polyline points="227.2,452.2 123.2,452.2 123.2,353 227.2,353 "/> <g> <rect x="133.1" y="380.8" fill="#53E01E" width="14.2" height="31.6"/> <rect x="158.4" y="409.8" fill="#D4D4D4" width="12.6" height="14.2"/> <rect x="187.8" y="409.8" fill="#FFFFFF" width="12.6" height="14.2"/> <rect x="129" y="424" fill="#FFFFFF" width="87.2" height="15.4"/> <rect x="214.3" y="413.6" fill="#53E01E" width="16.5" height="46.2"/> <rect x="214.3" y="465.3" fill="#53E01E" width="16.5" height="21.1"/> <rect x="143.8" y="419.8" fill="#53E01E" width="14.7" height="45.6"/> <rect x="119.6" y="423.8" fill="#53E01E" width="14" height="32.2"/> </g> <g> <rect x="112.2" y="327.2" fill="#D4D4D4" width="14.2" height="14.2"/> <g> <rect x="126.3" y="341.5" fill="#EDEDED" width="42.4" height="15"/> <rect x="140.9" y="356.5" fill="#EDEDED" width="14.2" height="14.2"/> </g> <g> <g> <g> <rect x="214.1" y="341.5" fill="#D4D4D4" width="13.8" height="14.2"/> <rect x="214.1" y="355.7" fill="#53E01E" width="13.8" height="19.8"/> </g> <rect x="227.5" y="327.1" fill="#FFFFFF" width="10.7" height="14.2"/> </g> <g> <g> <rect x="199.9" y="370.6" fill="#53E01E" width="14.2" height="15"/> <rect x="199.9" y="356.5" fill="#FFFFFF" width="14.2" height="14.2"/> </g> <rect x="168.7" y="341.5" fill="#FFFFFF" width="45.4" height="15"/> </g> </g> <rect x="160.3" y="356.6" fill="#4CAF1E" width="14" height="20.2"/> </g> </g>`,
+  frame2: `<rect x="144.7" y="514.3" width="59.1" height="34"/> <g> <rect x="147.3" y="439.5" fill="#434951" width="55.9" height="40.8"/> <path d="M206.1,483.3h-61.9v-46.8h61.9V483.3z M150.3,477.3h49.9v-34.8h-49.9V477.3z"/> </g> <g> <polygon fill="#434951" points="117.3,437.9 89.7,437.9 89.7,467.5 117.3,467.5 260.7,467.5 260.7,438.2 231.3,438.2 231.3,346.8 117.8,346.8 "/> <path d="M264.7,471.5H85.7v-37.6h27.6l0.4-91.1h121.5v91.3h29.4V471.5z M93.7,463.5h162.9v-21.3h-29.4v-91.3H121.7l-0.4,91.1 H93.7V463.5z"/> </g> <rect x="105.2" y="280.3" fill="#434951" width="140" height="164"/> <line x1="168.1" y1="419.1" x2="182.3" y2="419.1"/> <g> <polyline fill="#434951" points="89.4,241.8 70.5,241.8 70.5,222.7 51.7,222.7 51.7,241.8 70.5,241.8 70.5,260 89.2,260 89.2,266.6 89.2,271.8 89.2,279.5 138.7,279.5 138.7,292.8 214.8,292.8 214.8,278.6 262.8,278.6 262.8,271.8 262.8,265.8 262.8,260 281.7,260 281.7,241.8 300.4,241.8 300.4,224 281.7,224 281.7,241.8 263.1,241.8 263.1,150.5 249.9,150.5 249.9,69.4 230,69.4 230,49.5 205.6,49.5 205.6,30.5 145,30.5 145,49.5 119.7,49.5 119.7,69.4 102.9,69.4 102.9,150.5 89.4,150.5 89.4,241.8 "/> <path d="M217.8,295.8h-82v-13.3H86.2V263H67.5v-18.3H48.7v-25.1h24.7v19.1h12.9v-91.3h13.5V66.4h16.8V46.5H142V27.5h66.7v19.1 H233v19.9h19.9v81.1h13.2v91.3h12.6V221h24.7v23.8h-18.7V263h-18.8v18.6h-48.1V295.8z M141.7,289.8h70v-14.2h48.1V257h18.8v-12.3 h-18.6v-91.3h-13.2V72.4H227V52.5h-24.4V33.5H148v19.1h-25.3v19.9h-16.8v81.1H92.4v91.3H73.5V257h18.7v19.5h49.6V289.8z M284.7,238.8h12.7V227h-12.7V238.8z M54.7,238.8h12.7v-13.1H54.7V238.8z"/> </g> <g> <rect x="304.4" y="218.3" fill="#434951" width="18.7" height="17.8"/> <path d="M326.1,239.1h-24.7v-23.8h24.7V239.1z M307.4,233.1h12.7v-11.8h-12.7V233.1z"/> </g> <g> <rect x="27.3" y="218.3" fill="#434951" width="18.7" height="17.8"/> <path d="M49,239.1H24.3v-23.8H49V239.1z M30.3,233.1H43v-11.8H30.3V233.1z"/> </g> <polygon fill="#6A7077" points="233.8,137.5 222.3,137.5 222.3,102.4 212.2,102.4 212.2,146.2 217.9,146.2 217.9,195.2 192,195.2 192,241.8 233.8,241.8 233.8,221.1 233.8,221.1 "/> <polygon fill="#6A7077" points="146.4,85.3 124.8,85.3 124,85.3 113.3,85.3 113.3,168.8 124.8,168.8 124.8,137.8 146.4,137.8 "/> <g> <g> <polygon points="238.9,347.7 248.4,347.7 248.9,434.2 239.4,434.2 "/> <rect x="243.1" y="278" width="9.5" height="69.7"/> </g> <g> <rect x="99.5" y="278" width="9.5" height="69.7"/> <rect x="103.7" y="347.7" width="9.5" height="86.7"/> </g> </g> <rect x="158.4" y="265" fill="#6A7077" width="49.9" height="14"/> <rect x="208.3" y="256.1" fill="#6A7077" width="49.9" height="14"/> <polyline points="227.2,460.5 123.2,460.5 123.2,332.2 227.2,332.2 "/> <rect x="130.4" y="414.1" fill="#EDEDED" width="12.6" height="23.2"/> <rect x="147.4" y="418.1" fill="#FFFFFF" width="14.6" height="19.2"/> <rect x="189.8" y="418.1" fill="#FFFFFF" width="12.6" height="19.2"/> <rect x="207.8" y="414.1" fill="#EDEDED" width="12.6" height="23.2"/> <rect x="125" y="437.3" fill="#FFFFFF" width="102.2" height="23.2"/> <rect x="112.2" y="305" fill="#EDEDED" width="14.2" height="15.7"/> <rect x="119.3" y="320" fill="#EDEDED" width="49.4" height="15"/> <rect x="140.9" y="334.8" fill="#EDEDED" width="14.2" height="18.2"/> <rect x="214.1" y="320" fill="#FFFFFF" width="13.8" height="14.2"/> <rect x="199.9" y="334.8" fill="#FFFFFF" width="14.2" height="18.2"/> <g> <rect x="168.7" y="320" fill="#FFFFFF" width="45.4" height="15"/> <rect x="126.4" y="305" fill="#FFFFFF" width="111.8" height="15"/> </g> <rect x="125" y="437.3" fill="#53E01E" width="16.5" height="46.7"/> <rect x="139.1" y="371" fill="#53E01E" width="16.5" height="35.5"/> <rect x="212.5" y="460.5" fill="#53E01E" width="14.7" height="46.1"/> <rect x="119.3" y="342.2" fill="#53E01E" width="14" height="32.6"/> <rect x="218.9" y="350.6" fill="#53E01E" width="13.8" height="46"/> <g> <rect x="166.8" y="367.1" fill="#434951" width="15.6" height="148.8"/> <path d="M185.4,518.9h-21.6V364.1h21.6V518.9z M169.8,512.9h9.6V370.1h-9.6V512.9z"/> </g> <g> <rect x="140.6" y="499.8" fill="#434951" width="68" height="14"/> <path d="M211.6,516.8h-74v-20h74V516.8z M143.6,510.8h62v-8h-62V510.8z"/> </g> <g> <rect x="144.6" y="546.7" fill="#434951" width="60" height="14"/> <path d="M207.6,563.7h-66v-20h66V563.7z M147.6,557.7h54v-8h-54V557.7z"/> </g> <rect x="147.7" y="539.3" fill="#FFFFFF" width="10.3" height="10.3"/> <rect x="160.9" y="538.3" fill="#FFFFFF" width="10.3" height="11.3"/> <rect x="176.9" y="539.3" fill="#FFFFFF" width="10.3" height="10.3"/> <rect x="190.5" y="539.3" fill="#FFFFFF" width="10.3" height="10.3"/> <rect x="190.5" y="513.8" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 391.3657 1041.9426)" fill="#FFFFFF" width="10.3" height="14.3"/> <rect x="174.4" y="513.8" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 359.0266 1037.9426)" fill="#FFFFFF" width="10.3" height="10.3"/> <rect x="160.4" y="513.8" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 331.0266 1035.9426)" fill="#FFFFFF" width="10.3" height="8.3"/> <rect x="147.7" y="513.8" transform="matrix(-1 -1.224647e-16 1.224647e-16 -1 305.8002 1040.9426)" fill="#FFFFFF" width="10.3" height="13.3"/> <rect x="224" y="514.6" fill="#53E01E" width="14.2" height="31.9"/> <rect x="183.9" y="371.2" fill="#53E01E" width="14.2" height="15.2"/> <rect x="103.9" y="492.2" fill="#53E01E" width="14.2" height="15.2"/> <rect x="224.2" y="319.4" fill="#4CAF1E" width="14" height="20.5"/> </g>`
+};
+
 const LEVEL3_COLORS = ['#5c2e0e', '#4a7060', '#8a7a65', '#c28a3e'];
 const LEVEL_COLORS = { 1: '#9e9d9d', 2: '#3e5368', 3: '#6a7a6d', 4: '#ef4343' };
 
@@ -24,9 +29,11 @@ function makeEnemySVG(color, level, row) {
     svg = row % 2 === 0 ? ENEMY_SVG : ENEMY_SVG2;
     c = LEVEL3_COLORS[row % LEVEL3_COLORS.length];
   }
-  else if (level === 4) { svg = ENEMY_SVG4; c = '#53e01e'; }
+  else if (level === 4) { svg = ENEMY_SVG5; c = 'rgba(255,255,255,0.6)'; }
   else { svg = ENEMY_SVG; c = color; }
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 262.8 210.6" width="36" height="36">
+  const vb = level === 4 ? '0 0 348 612' : '0 0 262.8 210.6';
+  const sh = level === 4 ? '52' : '36';
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}" width="36" height="${sh}">
     <style>.f1{animation:sw 0.6s steps(1) infinite}.f2{animation:sw 0.6s steps(1) infinite reverse}@keyframes sw{0%,49%{opacity:1}50%,100%{opacity:0}}</style>
     <g class="f1" fill="${c}">${svg.frame1}</g>
     <g class="f2" fill="${c}">${svg.frame2}</g>
@@ -153,7 +160,7 @@ function checkBonusHit(b) {
   return false;
 }
 
-// --- Curly del tiburón ---
+// --- Tiburón: curly niveles 1-3, racimo nivel 4 ---
 const sharkBullets = [];
 let sharkShootTimer = 0;
 const SHARK_SHOOT_INTERVAL = 180;
@@ -164,28 +171,64 @@ function sharkShoot() {
   if (sharkShootTimer < SHARK_SHOOT_INTERVAL) return;
   if (Math.random() > 0.33) { sharkShootTimer = 0; return; }
   sharkShootTimer = 0;
-  const el = document.createElement('div');
-  el.classList.add('shark-bullet');
-  el.textContent = '〜';
-  el.style.cssText = `position:absolute;font-size:18px;color:#c28a3e;top:${bonus.y || 20}px;left:${bonus.x + 30}px;pointer-events:none;z-index:6;text-shadow:0 0 6px #ff8800;`;
-  board.appendChild(el);
-  sharkBullets.push({ el, x: bonus.x + 30, y: bonus.y || 20, vx: bonus.dir * -1.5, vy: 1.5, age: 0 });
+  const x = bonus.x + 30, y = bonus.y || 20;
+  if (state.level === 4) {
+    // bomba racimo
+    const el = document.createElement('div');
+    el.classList.add('shark-bullet');
+    el.style.cssText = `position:absolute;width:10px;height:10px;background:#c28a3e;border-radius:50%;top:${y}px;left:${x}px;pointer-events:none;z-index:6;box-shadow:0 0 6px #ff8800;`;
+    board.appendChild(el);
+    sharkBullets.push({ el, x, y, vx: 0, vy: 3, age: 0, isBomb: true, splitY: board.clientHeight * 0.45 });
+  } else {
+    // curly homing
+    const el = document.createElement('div');
+    el.classList.add('shark-bullet');
+    el.textContent = '〜';
+    el.style.cssText = `position:absolute;font-size:18px;color:#c28a3e;top:${y}px;left:${x}px;pointer-events:none;z-index:6;text-shadow:0 0 6px #ff8800;`;
+    board.appendChild(el);
+    sharkBullets.push({ el, x, y, vx: bonus.dir * -1.5, vy: 1.5, age: 0, isBomb: false });
+  }
+}
+
+function spawnCluster(x, y) {
+  [{ vx: -2.5, vy: 4 }, { vx: 0, vy: 5 }, { vx: 2.5, vy: 4 }].forEach(v => {
+    const el = document.createElement('div');
+    el.classList.add('shark-bullet');
+    el.style.cssText = `position:absolute;width:7px;height:7px;background:#ff8800;border-radius:50%;top:${y}px;left:${x}px;pointer-events:none;z-index:6;box-shadow:0 0 5px #c28a3e;`;
+    board.appendChild(el);
+    sharkBullets.push({ el, x, y, vx: v.vx, vy: v.vy, age: 0, isBomb: false });
+  });
 }
 
 function moveSharkBullets() {
   for (let i = sharkBullets.length - 1; i >= 0; i--) {
     const b = sharkBullets[i];
     b.age++;
-    const targetX = state.playerX + 24;
-    const dx = targetX - b.x;
-    b.vx += dx * 0.008;
-    b.vx = Math.max(-4, Math.min(4, b.vx));
-    b.vy += 0.05;
-    b.x += b.vx;
-    b.y += b.vy;
-    const wobble = Math.sin(b.age * 0.3) * 3;
-    b.el.style.left = (b.x + wobble) + 'px';
-    b.el.style.top = b.y + 'px';
+
+    if (b.isBomb) {
+      // bomba madre cae recta, explota al llegar a splitY
+      b.y += b.vy;
+      b.el.style.top = b.y + 'px';
+      if (b.y >= b.splitY) {
+        b.el.remove(); sharkBullets.splice(i, 1);
+        spawnCluster(b.x, b.y);
+        continue;
+      }
+    } else {
+      // curly homing (niveles 1-3) o fragmento de racimo
+      const targetX = state.playerX + 24;
+      const dx = targetX - b.x;
+      b.vx += dx * 0.008;
+      b.vx = Math.max(-4, Math.min(4, b.vx));
+      b.vy += 0.05;
+      b.x += b.vx;
+      b.y += b.vy;
+      const wobble = b.textContent === '〜' ? Math.sin(b.age * 0.3) * 3 : 0;
+      b.el.style.left = (b.x + wobble) + 'px';
+      b.el.style.top = b.y + 'px';
+    }
+
+    // colisión con jugador
     const px = state.playerX, py = board.clientHeight - 58;
     if (b.x >= px && b.x <= px + 48 && b.y >= py - 38 && b.y <= py + 4) {
       b.el.remove(); sharkBullets.splice(i, 1);
@@ -195,6 +238,8 @@ function moveSharkBullets() {
       if (state.lives <= 0) endGame();
       continue;
     }
+
+    // interceptable por bala jugador
     for (let j = state.bullets.length - 1; j >= 0; j--) {
       const pb = state.bullets[j];
       if (!pb || pb.owner !== 'player') continue;
@@ -203,12 +248,12 @@ function moveSharkBullets() {
         b.el.remove(); sharkBullets.splice(i, 1);
         pb.el.remove(); state.bullets[j] = null;
         state.score += 75;
-        showBonusPoints(b.x, board.clientHeight - b.y, 75);
+        showBonusPoints(b.x, b.y, 75);
         playBonus(); updateHUD(); break;
       }
     }
     state.bullets = state.bullets.filter(Boolean);
-    if (b.y > board.clientHeight + 20 || b.age > 300) { b.el.remove(); sharkBullets.splice(i, 1); }
+    if (b.y > board.clientHeight + 20 || b.age > 400) { b.el.remove(); sharkBullets.splice(i, 1); }
   }
 }
 
@@ -239,7 +284,7 @@ bgAudio.loop = false;
 bgAudio.volume = 0.4;
 bgAudio.addEventListener('ended', () => nextTrack());
 
-function playBG() { if (muted) return; bgAudio.play().catch(() => {}); }
+function playBG() { if (muted) return; bgAudio.play().catch(() => { }); }
 function pauseBG() { bgAudio.pause(); }
 function nextTrack() { trackIndex = (trackIndex + 1) % PLAYLIST.length; loadTrack(); playBG(); }
 function prevTrack() { trackIndex = (trackIndex - 1 + PLAYLIST.length) % PLAYLIST.length; loadTrack(); playBG(); }
@@ -338,7 +383,7 @@ async function fetchRecord() {
     const res = await fetch(SCORES_URL + '?limit=50');
     const data = await res.json();
     globalScores = data.scores || [];
-  } catch(e) { globalScores = []; }
+  } catch (e) { globalScores = []; }
   renderLeaderboard();
 }
 
@@ -349,7 +394,7 @@ function renderLeaderboard() {
   const colors = ['#FFD700', '#C0C0C0', '#CD7F32'];
   const sizes = ['22px', '18px', '15px'];
   el.innerHTML = globalScores.slice(0, 3).map((s, i) =>
-    `<span style="color:${colors[i]};font-size:${sizes[i]};margin:0 8px;letter-spacing:2px;">${i+1}. ${s.initials} <strong>${s.score}</strong></span>`
+    `<span style="color:${colors[i]};font-size:${sizes[i]};margin:0 8px;letter-spacing:2px;">${i + 1}. ${s.initials} <strong>${s.score}</strong></span>`
   ).join('');
 }
 
@@ -364,7 +409,7 @@ async function submitScore(score, initials) {
     globalScores = data.scores || globalScores;
     renderLeaderboard();
     return data.qualified;
-  } catch(e) { return false; }
+  } catch (e) { return false; }
 }
 
 function qualifiesTop3(score) {
@@ -466,7 +511,7 @@ function shootPlayer() {
 
 // --- Spawn enemigos ---
 function spawnEnemies() {
-  const config = { 1:{rows:3,cols:8}, 2:{rows:3,cols:10}, 3:{rows:4,cols:10}, 4:{rows:5,cols:10} };
+  const config = { 1: { rows: 3, cols: 8 }, 2: { rows: 3, cols: 10 }, 3: { rows: 4, cols: 10 }, 4: { rows: 5, cols: 10 } };
   const { rows, cols } = config[state.level];
   const color = LEVEL_COLORS[state.level];
   for (let r = 0; r < rows; r++) {
@@ -525,6 +570,7 @@ function enemyShoot() {
     const startX = shooter.x + 18 + (s * 6);
     const bullet = document.createElement('div');
     bullet.classList.add('bullet', 'bullet-enemy');
+    if (state.level === 4) bullet.style.background = '#35d926';
     bullet.style.left = startX + 'px';
     bullet.style.top = (shooter.y + 36) + 'px';
     board.appendChild(bullet);
@@ -555,7 +601,7 @@ function pixelFlash(x, y, lives, color = '#fff') {
     const size = 3 + Math.floor(Math.random() * 5);
     const angle = Math.random() * Math.PI * 2;
     const dist = 20 + Math.random() * 40;
-    px.style.cssText = `position:absolute;width:${size}px;height:${size}px;background:${color};left:${x}px;bottom:${y}px;pointer-events:none;animation:pixelFly 0.5s ease-out forwards;--dx:${Math.cos(angle)*dist}px;--dy:${Math.sin(angle)*dist}px;`;
+    px.style.cssText = `position:absolute;width:${size}px;height:${size}px;background:${color};left:${x}px;bottom:${y}px;pointer-events:none;animation:pixelFly 0.5s ease-out forwards;--dx:${Math.cos(angle) * dist}px;--dy:${Math.sin(angle) * dist}px;`;
     board.appendChild(px);
     setTimeout(() => px.remove(), 520);
   }
@@ -633,12 +679,12 @@ async function showLeaderboard() {
     const res = await fetch(SCORES_URL + '?limit=50&t=' + Date.now());
     const data = await res.json();
     scores = data.scores || [];
-  } catch(e) { scores = globalScores; }
+  } catch (e) { scores = globalScores; }
 
-  const colors = ['#FFD700','#C0C0C0','#CD7F32'];
+  const colors = ['#FFD700', '#C0C0C0', '#CD7F32'];
   const rows = scores.map((s, i) => {
     const c = colors[i] || '#ede0cc';
-    const pos = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}`;
+    const pos = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i + 1}`;
     const dt = s.time ? `${s.date || ''} ${s.time}` : (s.date || '');
     return `<tr style="color:${c};border-bottom:1px solid #333">
       <td style="padding:4px 8px;text-align:center;width:40px">${pos}</td>
