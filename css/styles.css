@@ -824,7 +824,7 @@ body {
   #touch-controls {
     display: flex;
     position: absolute;
-    bottom: 8px;
+    bottom: 85px;
     left: 0;
     width: 100%;
     justify-content: space-between;
