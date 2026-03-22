@@ -9,10 +9,6 @@ const ENEMY_SVG2 = {
   frame2: `<rect x="89.2" y="49.2" width="87.2" height="23"/><path d="M91.6,98.6V115h18.4V98.6h12.2V115h18.4V98.6H153V115h18.4V98.6V83.1h15.9v-6.7l0,0V41.9l0,0v-7.1h-16V19.4 H91.5v15.4H75.8v16.2l0,0v16l0,0v16.2h15.8V98.6z M171,46.9v24h-31.6v-24H171z M92.1,46.9h31.2v24H92.1V46.9z"/><polygon points="208.9,83.1 208.9,125.6 171.2,125.6 171.2,141.3 92.1,141.3 92.1,125.6 54.4,125.6 54.4,83.1 31.6,83.1 31.6,125.6 31.6,127.5 31.6,141.8 91.6,141.8 91.6,157.3 31.6,157.3 31.6,171.6 31.6,173.5 31.6,200 54.4,200 54.4,173.5 92.1,173.5 92.1,157.4 171.2,157.4 171.2,173.5 208.9,173.5 208.9,200 231.7,200 231.7,173.5 231.7,171.6 231.7,157.3 171.3,157.3 171.3,141.8 231.7,141.8 231.7,127.5 231.7,125.6 231.7,83.1"/>`
 };
 
-const ENEMY_SVG4 = {
-  frame1: `<rect x="101.8" y="49.2" fill="#53e01e" width="87.2" height="20"/><path fill="#53e01e" d="M104.2,98.6V115h18.4V98.6h12.2V115h18.4V98.6h12.4V115H184V98.6V83.1h15.9v-6.7l0,0V41.9l0,0v-7.1h-16V19.4 h-79.8v15.4H88.4V51l0,0v16l0,0v16.2h15.8C104.2,83.2,104.2,98.6,104.2,98.6z M183.6,50.9v16H152v-16H183.6z M104.7,50.9h31.2v16 h-31.2V50.9z"/><polygon fill="#53e01e" points="221.5,83.1 221.5,125.6 183.8,125.6 183.8,141.3 104.7,141.3 104.7,125.6 67,125.6 67,83.1 44.2,83.1 44.2,125.6 44.2,127.5 44.2,141.8 104.2,141.8 104.2,157.3 44.2,157.3 44.2,171.6 44.2,173.5 44.2,200 67,200 67,173.5 104.7,173.5 104.7,157.4 183.8,157.4 183.8,173.5 221.5,173.5 221.5,200 244.3,200 244.3,173.5 244.3,171.6 244.3,157.3 183.9,157.3 183.9,141.8 244.3,141.8 244.3,127.5 244.3,125.6 244.3,83.1"/>`,
-  frame2: `<rect x="101.8" y="49.2" fill="#53e01e" width="87.2" height="20"/><path fill="#53e01e" d="M104.2,98.6V115h18.4V98.6h12.2V115h18.4V98.6h12.4V115H184V98.6V83.1h15.9v-6.7l0,0V41.9l0,0v-7.1h-16V19.4 h-79.8v15.4H88.4V51l0,0v16l0,0v16.2h15.8C104.2,83.2,104.2,98.6,104.2,98.6z M183.6,50.9v16H152v-16H183.6z M104.7,50.9h31.2v16 h-31.2V50.9z"/><polygon fill="#53e01e" points="221.5,109.1 221.5,125.6 183.8,125.6 183.8,141.3 104.7,141.3 104.7,125.6 67,125.6 67,109.1 44.2,109.1 44.2,125.6 44.2,127.5 44.2,141.8 104.2,141.8 104.2,157.3 44.2,157.3 44.2,171.6 44.2,173.5 44.2,190 67,190 67,173.5 104.7,173.5 104.7,157.4 183.8,157.4 183.8,173.5 221.5,173.5 221.5,190 244.3,190 244.3,173.5 244.3,171.6 244.3,157.3 183.9,157.3 183.9,141.8 244.3,141.8 244.3,127.5 244.3,125.6 244.3,109.1"/>`
-};
 
 const ENEMY_SVG5 = {
   frame1: `<g> <rect x="147.3" y="432.2" fill="#434951" width="55.9" height="40.8"/> <path d="M206.1,476h-61.9v-46.8h61.9V476z M150.3,470h49.9v-34.8h-49.9V470z"/> </g> <g> <polygon fill="#434951" points="117.3,429.6 99.7,429.6 99.7,459.2 117.3,459.2 250.7,459.2 250.7,429.9 231.3,429.9 231.3,367.5 117.8,367.5 "/> <path d="M254.7,463.2H95.7v-37.6h17.6l0.4-62.1h121.5v62.3h19.4V463.2z M103.7,455.2h142.9v-21.3h-19.4v-62.3H121.7l-0.4,62.1 h-17.6V455.2z"/> </g> <rect x="105.2" y="301" fill="#434951" width="140" height="130"/> <line x1="168.1" y1="410.9" x2="182.3" y2="410.9"/> <g> <g> <polyline fill="#434951" points="89.4,262.5 70.5,262.5 70.5,243.4 51.7,243.4 51.7,262.5 70.5,262.5 70.5,280.7 89.2,280.7 89.2,287.3 89.2,297.5 89.2,305.2 138.7,305.2 138.7,318.5 214.8,318.5 214.8,304.3 262.8,304.3 262.8,297.5 262.8,286.5 262.8,280.7 281.7,280.7 281.7,262.5 300.4,262.5 300.4,244.7 281.7,244.7 281.7,262.5 263.1,262.5 263.1,171.2 249.9,171.2 249.9,85.1 230,85.1 230,65.2 205.6,65.2 205.6,46.2 145,46.2 145,65.2 119.7,65.2 119.7,85.1 102.9,85.1 102.9,171.2 89.4,171.2 89.4,262.5 "/> <path d="M217.8,321.5h-82v-13.3H86.2v-24.5H67.5v-18.3H48.7v-25.1h24.7v19.1h12.9v-91.3h13.5V82.1h16.8V62.2H142V43.2h66.7v19.1 H233v19.9h19.9v86.1h13.2v91.3h12.6v-17.8h24.7v23.8h-18.7v18.3h-18.8v23.6h-48.1V321.5z M141.7,315.5h70v-14.2h48.1v-23.6h18.8 v-12.3h-18.6v-91.3h-13.2V88.1H227V68.2h-24.4V49.2H148v19.1h-25.3v19.9h-16.8v86.1H92.4v91.3H73.5v12.3h18.7v24.5h49.6V315.5z M284.7,259.5h12.7v-11.8h-12.7V259.5z M54.7,259.5h12.7v-13.1H54.7V259.5z"/> </g> <g> <rect x="304.4" y="226" fill="#434951" width="18.7" height="17.8"/> <path d="M326.1,246.8h-24.7V223h24.7V246.8z M307.4,240.8h12.7V229h-12.7V240.8z"/> </g> <g> <rect x="27.3" y="226" fill="#434951" width="18.7" height="17.8"/> <path d="M49,246.8H24.3V223H49V246.8z M30.3,240.8H43V229H30.3V240.8z"/> </g> <polygon fill="#6A7077" points="233.8,158.3 222.3,158.3 222.3,118.2 212.2,118.2 212.2,166.9 217.9,166.9 217.9,215.9 192,215.9 192,262.5 233.8,262.5 233.8,241.8 233.8,241.8 "/> <polygon fill="#6A7077" points="146.4,101 124.8,101 124,101 113.3,101 113.3,189.5 124.8,189.5 124.8,158.6 146.4,158.6 "/> <g> <g> <polygon points="238.9,368.4 248.4,368.4 248.9,431 239.4,431 "/> <rect x="243.1" y="305.7" width="9.5" height="62.7"/> </g> <g> <rect x="99.5" y="305.7" width="9.5" height="62.7"/> <rect x="103.7" y="368.4" width="9.5" height="62.7"/> </g> </g> <rect x="158.4" y="299.7" fill="#6A7077" width="49.9" height="14"/> <rect x="208.3" y="285.8" fill="#6A7077" width="49.9" height="14"/> </g> <g> <polyline points="227.2,452.2 123.2,452.2 123.2,353 227.2,353 "/> <g> <rect x="133.1" y="380.8" fill="#53E01E" width="14.2" height="31.6"/> <rect x="158.4" y="409.8" fill="#D4D4D4" width="12.6" height="14.2"/> <rect x="187.8" y="409.8" fill="#FFFFFF" width="12.6" height="14.2"/> <rect x="129" y="424" fill="#FFFFFF" width="87.2" height="15.4"/> <rect x="214.3" y="413.6" fill="#53E01E" width="16.5" height="46.2"/> <rect x="214.3" y="465.3" fill="#53E01E" width="16.5" height="21.1"/> <rect x="143.8" y="419.8" fill="#53E01E" width="14.7" height="45.6"/> <rect x="119.6" y="423.8" fill="#53E01E" width="14" height="32.2"/> </g> <g> <rect x="112.2" y="327.2" fill="#D4D4D4" width="14.2" height="14.2"/> <g> <rect x="126.3" y="341.5" fill="#EDEDED" width="42.4" height="15"/> <rect x="140.9" y="356.5" fill="#EDEDED" width="14.2" height="14.2"/> </g> <g> <g> <g> <rect x="214.1" y="341.5" fill="#D4D4D4" width="13.8" height="14.2"/> <rect x="214.1" y="355.7" fill="#53E01E" width="13.8" height="19.8"/> </g> <rect x="227.5" y="327.1" fill="#FFFFFF" width="10.7" height="14.2"/> </g> <g> <g> <rect x="199.9" y="370.6" fill="#53E01E" width="14.2" height="15"/> <rect x="199.9" y="356.5" fill="#FFFFFF" width="14.2" height="14.2"/> </g> <rect x="168.7" y="341.5" fill="#FFFFFF" width="45.4" height="15"/> </g> </g> <rect x="160.3" y="356.6" fill="#4CAF1E" width="14" height="20.2"/> </g> </g>`,
@@ -173,14 +169,12 @@ function sharkShoot() {
   sharkShootTimer = 0;
   const x = bonus.x + 30, y = bonus.y || 20;
   if (state.level === 4) {
-    // bomba racimo
     const el = document.createElement('div');
     el.classList.add('shark-bullet');
     el.style.cssText = `position:absolute;width:10px;height:10px;background:#c28a3e;border-radius:50%;top:${y}px;left:${x}px;pointer-events:none;z-index:6;box-shadow:0 0 6px #ff8800;`;
     board.appendChild(el);
     sharkBullets.push({ el, x, y, vx: 0, vy: 3, age: 0, isBomb: true, splitY: board.clientHeight * 0.45 });
   } else {
-    // curly homing
     const el = document.createElement('div');
     el.classList.add('shark-bullet');
     el.textContent = '〜';
@@ -204,9 +198,7 @@ function moveSharkBullets() {
   for (let i = sharkBullets.length - 1; i >= 0; i--) {
     const b = sharkBullets[i];
     b.age++;
-
     if (b.isBomb) {
-      // bomba madre cae recta, explota al llegar a splitY
       b.y += b.vy;
       b.el.style.top = b.y + 'px';
       if (b.y >= b.splitY) {
@@ -215,7 +207,6 @@ function moveSharkBullets() {
         continue;
       }
     } else {
-      // curly homing (niveles 1-3) o fragmento de racimo
       const targetX = state.playerX + 24;
       const dx = targetX - b.x;
       b.vx += dx * 0.008;
@@ -223,12 +214,10 @@ function moveSharkBullets() {
       b.vy += 0.05;
       b.x += b.vx;
       b.y += b.vy;
-      const wobble = b.textContent === '〜' ? Math.sin(b.age * 0.3) * 3 : 0;
+      const wobble = b.el.textContent === '〜' ? Math.sin(b.age * 0.3) * 3 : 0;
       b.el.style.left = (b.x + wobble) + 'px';
       b.el.style.top = b.y + 'px';
     }
-
-    // colisión con jugador
     const px = state.playerX, py = board.clientHeight - 58;
     if (b.x >= px && b.x <= px + 48 && b.y >= py - 38 && b.y <= py + 4) {
       b.el.remove(); sharkBullets.splice(i, 1);
@@ -238,8 +227,6 @@ function moveSharkBullets() {
       if (state.lives <= 0) endGame();
       continue;
     }
-
-    // interceptable por bala jugador
     for (let j = state.bullets.length - 1; j >= 0; j--) {
       const pb = state.bullets[j];
       if (!pb || pb.owner !== 'player') continue;
