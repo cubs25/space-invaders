@@ -408,3 +408,22 @@ body {
   #track-label { font-size: 12px; }
   #score-bg { font-size: 80px; }
 }
+
+/* btn-toggle-bar dentro del hud */
+@media (max-width: 680px) {
+  #btn-toggle-bar {
+    display: flex;
+    background: #4a7060;
+    border: 1px solid #c28a3e;
+    color: #ede0cc;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    flex-shrink: 0;
+    margin-left: 4px;
+  }
+}
