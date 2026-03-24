@@ -698,7 +698,9 @@ screenStart.classList.remove('hidden');
 // --- Scale móvil dinámico ---
 function applyMobileScale() {
   if (window.innerWidth >= 680) return;
-  const scale = Math.min(window.innerWidth / 620, window.innerHeight / 740) * 0.9;
+  const touchH = 90; // altura reservada para botones táctiles
+  const availH = window.innerHeight - touchH;
+  const scale = Math.min(window.innerWidth / 620, availH / 740);
   const game = document.getElementById('game');
   game.style.transformOrigin = 'top left';
   game.style.transform = `scale(${scale})`;

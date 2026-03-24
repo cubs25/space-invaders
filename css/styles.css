@@ -904,19 +904,25 @@ body {
     height: 100vh;
     overflow: hidden;
     background: #000;
+    margin: 0;
+    padding: 0;
   }
 
   #game {
     border: none;
     overflow: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
+  /* Botón hamburguesa */
   #btn-toggle-bar {
     display: flex;
     position: fixed;
     top: 6px;
     right: 8px;
-    z-index: 100;
+    z-index: 200;
     background: #4a7060;
     border: 1px solid #c28a3e;
     color: #ede0cc;
@@ -929,6 +935,7 @@ body {
     font-family: 'VT323', monospace;
   }
 
+  /* Barra colapsable */
   #top-bar-collapsible {
     max-height: 0;
     overflow: hidden;
@@ -939,6 +946,7 @@ body {
     max-height: 120px;
   }
 
+  /* Touch controls: izq+der a la izquierda, fire a la derecha */
   #touch-controls {
     display: flex;
     position: fixed;
@@ -947,10 +955,15 @@ body {
     width: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 16px 12px;
-    background: rgba(5, 5, 16, 0.92);
+    padding: 8px 20px 16px;
+    background: rgba(5, 5, 16, 0.95);
     border-top: 1px solid #1a1a4a;
-    z-index: 50;
+    z-index: 150;
+  }
+
+  #touch-controls .btn-group-left {
+    display: flex;
+    gap: 10px;
   }
 
   .touch-btn {
@@ -959,8 +972,8 @@ body {
     color: #ede0cc;
     font-family: 'VT323', monospace;
     font-size: 28px;
-    width: 80px;
-    height: 64px;
+    width: 76px;
+    height: 68px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -978,7 +991,7 @@ body {
 
   .touch-fire {
     font-size: 18px;
-    width: 96px;
+    width: 90px;
     background: rgba(194, 138, 62, 0.3);
     border-color: #c28a3e;
     color: #c28a3e;
