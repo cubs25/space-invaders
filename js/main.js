@@ -695,32 +695,48 @@ player.style.cssText = 'position:absolute;bottom:20px;width:48px;height:38px;';
 fetchRecord();
 updatePlayerUI();
 screenStart.classList.remove('hidden');
-// --- Scale móvil dinámico ---
-function applyMobileScale() {
-  if (window.innerWidth >= 680) return;
-  const touchH = 90; // altura reservada para botones táctiles
-  const availH = window.innerHeight - touchH;
-  const scale = Math.min(window.innerWidth / 620, availH / 740);
-  const game = document.getElementById('game');
-  game.style.transformOrigin = 'top left';
-  game.style.transform = `scale(${scale})`;
-  game.style.width = '620px';
-  game.style.height = '740px';
-  game.style.position = 'absolute';
-  game.style.left = ((window.innerWidth - 620 * scale) / 2) + 'px';
-  game.style.top = '0px';
-}
-applyMobileScale();
-window.addEventListener('resize', applyMobileScale);
 
-// --- Barra superior colapsable (móvil) ---
+// --- Móvil: scale + hamburguesa + touch controls ---
 (function () {
-  if (window.innerWidth >= 680) return;
+  function applyMobileScale() {
+    if (window.innerWidth >= 680) return;
+    const touchH = 90;
+    const scale = Math.min(window.innerWidth / 620, (window.innerHeight - touchH) / 740);
+    const game = document.getElementById('game');
+    game.style.transformOrigin = 'top left';
+    game.style.transform = 'scale(' + scale + ')';
+    game.style.width = '620px';
+    game.style.height = '740px';
+    game.style.position = 'absolute';
+    game.style.left = ((window.innerWidth - 620 * scale) / 2) + 'px';
+    game.style.top = '0px';
+  }
+  applyMobileScale();
+  window.addEventListener('resize', applyMobileScale);
+
+  // Hamburguesa
   const btn = document.getElementById('btn-toggle-bar');
   const bar = document.getElementById('top-bar-collapsible');
-  if (!btn || !bar) return;
-  btn.addEventListener('click', () => {
-    const open = bar.classList.toggle('bar-open');
-    btn.innerHTML = open ? '<i class="fa-solid fa-chevron-up"></i>' : '<i class="fa-solid fa-bars"></i>';
-  });
+  if (btn && bar) {
+    btn.addEventListener('click', () => {
+      const open = bar.classList.toggle('bar-open');
+      btn.innerHTML = open ? '<i class="fa-solid fa-chevron-up"></i>' : '<i class="fa-solid fa-bars"></i>';
+    });
+  }
+
+  // Touch controls
+  const btnLeft  = document.getElementById('touch-left');
+  const btnRight = document.getElementById('touch-right');
+  const btnFire  = document.getElementById('touch-fire');
+  if (!btnLeft) return;
+
+  btnLeft.addEventListener('touchstart',  function(e) { e.preventDefault(); state.keys['ArrowLeft'] = true; },  { passive: false });
+  btnLeft.addEventListener('touchend',    function(e) { e.preventDefault(); state.keys['ArrowLeft'] = false; }, { passive: false });
+  btnLeft.addEventListener('touchcancel', function()  { state.keys['ArrowLeft'] = false; });
+
+  btnRight.addEventListener('touchstart',  function(e) { e.preventDefault(); state.keys['ArrowRight'] = true; },  { passive: false });
+  btnRight.addEventListener('touchend',    function(e) { e.preventDefault(); state.keys['ArrowRight'] = false; }, { passive: false });
+  btnRight.addEventListener('touchcancel', function()  { state.keys['ArrowRight'] = false; });
+
+  btnFire.addEventListener('touchstart', function(e) { e.preventDefault(); if (state.running) shootPlayer(); }, { passive: false });
 })();
