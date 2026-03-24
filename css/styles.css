@@ -321,17 +321,17 @@ body {
   }
 
   #btn-toggle-bar {
-    display: flex;
-    position: fixed;
-    top: 6px;
-    right: 8px;
+    display: flex !important;
+    position: absolute !important;
+    top: 6px !important;
+    right: 6px !important;
     z-index: 200;
     background: #4a7060;
     border: 1px solid #c28a3e;
     color: #ede0cc;
-    font-size: 16px;
-    width: 32px;
-    height: 32px;
+    font-size: 14px;
+    width: 28px;
+    height: 28px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -419,26 +419,4 @@ body {
   #music-player { font-size: 11px; padding: 3px 8px; gap: 3px; }
   #track-label { font-size: 12px; }
   #score-bg { font-size: 80px; }
-}
-
-/* btn-toggle-bar dentro del hud */
-@media (max-width: 680px) {
-  #btn-toggle-bar {
-    display: flex !important;
-    position: absolute !important;
-    top: 6px !important;
-    right: 6px !important;
-    background: #4a7060;
-    border: 1px solid #c28a3e;
-    color: #ede0cc;
-    font-size: 14px;
-    width: 28px;
-    height: 28px;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-family: 'VT323', monospace;
-    flex-shrink: 0;
-    z-index: 200;
-  }
 }
