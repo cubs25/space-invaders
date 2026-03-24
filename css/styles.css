@@ -892,3 +892,107 @@ body {
     font-size: 80px;
   }
 }
+
+/* ── Mobile ── */
+#touch-controls { display: none; }
+#btn-toggle-bar { display: none; }
+
+@media (max-width: 680px) {
+  body {
+    transform: none;
+    align-items: flex-start;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  #game {
+    border: none;
+    overflow: visible;
+  }
+
+  #btn-toggle-bar {
+    display: flex;
+    position: fixed;
+    top: 6px;
+    right: 8px;
+    z-index: 100;
+    background: #4a7060;
+    border: 1px solid #c28a3e;
+    color: #ede0cc;
+    font-size: 16px;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+  }
+
+  #top-bar-collapsible {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  #top-bar-collapsible.bar-open {
+    max-height: 120px;
+  }
+
+  #touch-controls {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px 12px;
+    background: rgba(5, 5, 16, 0.92);
+    border-top: 1px solid #1a1a4a;
+    z-index: 50;
+  }
+
+  .touch-btn {
+    background: rgba(74, 112, 96, 0.5);
+    border: 2px solid #4a7060;
+    color: #ede0cc;
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    width: 80px;
+    height: 64px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+  }
+
+  .touch-btn:active {
+    background: rgba(74, 112, 96, 0.95);
+    border-color: #c28a3e;
+  }
+
+  .touch-fire {
+    font-size: 18px;
+    width: 96px;
+    background: rgba(194, 138, 62, 0.3);
+    border-color: #c28a3e;
+    color: #c28a3e;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .touch-fire:active {
+    background: rgba(194, 138, 62, 0.85);
+    color: #fff;
+  }
+
+  #hud { font-size: 13px; padding: 5px 8px; letter-spacing: 1px; }
+  #music-player { font-size: 11px; padding: 3px 8px; gap: 3px; }
+  #track-label { font-size: 12px; }
+  #score-bg { font-size: 80px; }
+}
