@@ -316,6 +316,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    width: 100vw;
+    height: 100vh;
   }
 
   #btn-toggle-bar {
@@ -403,7 +405,17 @@ body {
     color: #fff;
   }
 
-  #hud { font-size: 13px; padding: 5px 8px; letter-spacing: 1px; }
+  #hud { 
+    font-size: 13px; 
+    padding: 5px 8px; 
+    letter-spacing: 1px; 
+    flex-wrap: wrap;
+    gap: 4px;
+    position: relative;
+  }
+  #hud span {
+    min-width: auto;
+  }
   #music-player { font-size: 11px; padding: 3px 8px; gap: 3px; }
   #track-label { font-size: 12px; }
   #score-bg { font-size: 80px; }
@@ -412,7 +424,10 @@ body {
 /* btn-toggle-bar dentro del hud */
 @media (max-width: 680px) {
   #btn-toggle-bar {
-    display: flex;
+    display: flex !important;
+    position: absolute !important;
+    top: 6px !important;
+    right: 6px !important;
     background: #4a7060;
     border: 1px solid #c28a3e;
     color: #ede0cc;
@@ -424,6 +439,6 @@ body {
     cursor: pointer;
     font-family: 'VT323', monospace;
     flex-shrink: 0;
-    margin-left: 4px;
+    z-index: 200;
   }
 }
